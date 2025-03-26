@@ -2,6 +2,8 @@ package com.qx.domain.activity.service.trail.factory;
 
 import com.qx.domain.activity.model.entity.MarketProductEntity;
 import com.qx.domain.activity.model.entity.TrialBalanceEntity;
+import com.qx.domain.activity.model.valobj.GroupBuyActivityDiscountVO;
+import com.qx.domain.activity.model.valobj.SkuVO;
 import com.qx.domain.activity.service.trail.node.RootNode;
 import com.qx.types.design.framework.tree.StrategyHandler;
 import lombok.AllArgsConstructor;
@@ -33,6 +35,12 @@ public class DefaultActivityStrategyFactory {
     @AllArgsConstructor
     @NoArgsConstructor
     public static class DynamicContext {
+
+        // 拼团活动营销配置对象
+        private GroupBuyActivityDiscountVO groupBuyActivityDiscountVO;
+
+        // 商品信息
+        private SkuVO skuVO;
 
     }
 }

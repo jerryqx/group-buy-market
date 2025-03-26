@@ -1,6 +1,7 @@
 package com.qx.infrastructure.dao;
 
 import com.qx.infrastructure.dao.po.GroupBuyActivity;
+import com.qx.infrastructure.dao.po.Sku;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -11,10 +12,8 @@ import java.util.List;
  * @create 2024-12-07 10:10
  */
 @Mapper
-public interface IGroupBuyActivityDao {
+public interface ISkuDao {
 
-    List<GroupBuyActivity> queryGroupBuyActivityList();
-
-    GroupBuyActivity queryValidGroupBuyActivity(GroupBuyActivity groupBuyActivityReq);
+    Sku querySkuByGoodsId(String goodsId);
 
 }
