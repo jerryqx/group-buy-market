@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Function:
+ * Function: 营销商品
  *
  * @author 秦啸
  */

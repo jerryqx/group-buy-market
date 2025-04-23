@@ -76,7 +76,6 @@ public class ActivityRepository implements IActivityRepository {
         Sku sku = skuDao.querySkuByGoodsId(goodsId);
         if (sku != null) {
             return SkuVO.builder()
-
                 .goodsId(sku.getGoodsId())
                 .goodsName(sku.getGoodsName())
                 .originalPrice(sku.getOriginalPrice())

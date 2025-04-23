@@ -1,8 +1,8 @@
 package com.qx.domain.activity.service.trail;
 
 import com.qx.domain.activity.adapter.repository.IActivityRepository;
+import com.qx.domain.activity.service.trail.factory.DefaultActivityStrategyFactory;
 import com.qx.types.design.framework.tree.AbstractMultiThreadStrategyRouter;
-import com.qx.types.design.framework.tree.AbstractStrategyRouter;
 
 import javax.annotation.Resource;
 
@@ -11,8 +11,7 @@ import javax.annotation.Resource;
  *
  * @author 秦啸
  */
-public abstract class AbstractGroupBuyMarketSupport<MarketProductEntity, Object, TrailBalanceEntity>
-    extends AbstractMultiThreadStrategyRouter<MarketProductEntity, Object, TrailBalanceEntity> {
+public abstract class AbstractGroupBuyMarketSupport<MarketProductEntity, DynamicContext, TrialBalanceEntity> extends AbstractMultiThreadStrategyRouter<MarketProductEntity, DefaultActivityStrategyFactory.DynamicContext, TrialBalanceEntity>  {
 
     protected long timeout = 500;
 
@@ -22,7 +21,7 @@ public abstract class AbstractGroupBuyMarketSupport<MarketProductEntity, Object,
 
 
     @Override
-    protected void multiThread(MarketProductEntity requestParameter, Object dynamicContext) throws Exception {
+    protected void multiThread(MarketProductEntity requestParameter, DefaultActivityStrategyFactory.DynamicContext dynamicContext) throws Exception {
 
     }
 }

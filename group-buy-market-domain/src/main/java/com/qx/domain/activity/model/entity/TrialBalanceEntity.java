@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * Function:
+ * Function: 试算结果
  *
  * @author 秦啸
  */

@@ -1,8 +1,7 @@
-package com.qx.domain.activity;
+package com.qx.domain.activity.service;
 
 import com.qx.domain.activity.model.entity.MarketProductEntity;
 import com.qx.domain.activity.model.entity.TrialBalanceEntity;
-import com.qx.domain.activity.service.IIndexGroupBuyMarketService;
 import com.qx.domain.activity.service.trail.factory.DefaultActivityStrategyFactory;
 import com.qx.types.design.framework.tree.StrategyHandler;
 import org.springframework.stereotype.Service;

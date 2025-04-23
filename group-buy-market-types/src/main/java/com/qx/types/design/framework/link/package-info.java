@@ -1,5 +1,5 @@
 /**
- * Function:
+ * Function: 责任链模板
  *
  * @author 秦啸
  */
