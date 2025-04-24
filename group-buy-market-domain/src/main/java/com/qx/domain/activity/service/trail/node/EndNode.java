@@ -11,8 +11,6 @@ import com.qx.types.design.framework.tree.StrategyHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
-
 /**
  * Function:
  *
@@ -34,7 +32,7 @@ public class EndNode extends AbstractGroupBuyMarketSupport<MarketProductEntity, 
             .goodsId(skuVO.getGoodsId())
             .goodsName(skuVO.getGoodsName())
             .originalPrice(skuVO.getOriginalPrice())
-            .deductionPrice(new BigDecimal("0.00"))
+            .deductionPrice(dynamicContext.getDeductionPrice())
             .targetCount(groupBuyActivityDiscountVO.getTarget())
             .startTime(groupBuyActivityDiscountVO.getStartTime())
             .endTime(groupBuyActivityDiscountVO.getEndTime())

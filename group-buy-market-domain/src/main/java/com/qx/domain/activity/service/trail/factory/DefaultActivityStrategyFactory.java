@@ -12,6 +12,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+
 /**
  * Function:
  *
@@ -41,6 +43,9 @@ public class DefaultActivityStrategyFactory {
 
         // 商品信息
         private SkuVO skuVO;
+
+        // 折扣价格
+        BigDecimal deductionPrice;
 
     }
 }
