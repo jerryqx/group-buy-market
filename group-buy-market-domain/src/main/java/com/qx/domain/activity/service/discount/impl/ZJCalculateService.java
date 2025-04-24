@@ -14,6 +14,13 @@ public class ZJCalculateService extends AbstractDiscountCalculateService {
     @Override
     protected BigDecimal doCalculate(BigDecimal originalPrice,
                                      GroupBuyActivityDiscountVO.GroupBuyDiscount groupBuyDiscount) {
-        return null;
+
+        log.info("优惠策略折扣计算:{}", groupBuyDiscount.getDiscountType().getCode());
+
+        // 折扣表达式 - 直减为扣金额
+        String marketExpr = groupBuyDiscount.getMarketExpr();
+        BigDecimal deductionPrice = originalPrice.subtract(new BigDecimal(marketExpr));
+        // 判断折扣后金额，最低支付1分钱
+        return ensureMinPay(deductionPrice);
     }
 }
