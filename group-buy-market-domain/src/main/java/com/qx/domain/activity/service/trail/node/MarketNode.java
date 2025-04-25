@@ -40,6 +40,9 @@ public class MarketNode extends
     private EndNode endNode;
 
     @Resource
+    private ErrorNode errorNode;
+
+    @Resource
     private Map<String, IDiscountCalculateService> discountCalculateServiceMap;
 
     @Override
@@ -48,7 +51,7 @@ public class MarketNode extends
         // 异步查询活动配置信息
         QueryGroupBuyActivityDiscountVOThreadTask queryGroupBuyActivityDiscountVOThreadTask =
                 new QueryGroupBuyActivityDiscountVOThreadTask(requestParameter.getSource(),
-                        requestParameter.getChannel(), repository);
+                        requestParameter.getChannel(), requestParameter.getGoodsId(), repository);
         FutureTask<GroupBuyActivityDiscountVO> groupBuyActivityDiscountVOFutureTask =
                 new FutureTask<>(queryGroupBuyActivityDiscountVOThreadTask);
         threadPoolExecutor.execute(groupBuyActivityDiscountVOFutureTask);
@@ -72,6 +75,9 @@ public class MarketNode extends
         log.info("拼团商品查询试算服务-MarketNode userId:{} requestParameter:{}", requestParameter.getUserId(),
                 JSON.toJSONString(requestParameter));
         GroupBuyActivityDiscountVO groupBuyActivityDiscountVO = dynamicContext.getGroupBuyActivityDiscountVO();
+        if (null == groupBuyActivityDiscountVO) {
+            return router(requestParameter, dynamicContext);
+        }
         GroupBuyActivityDiscountVO.GroupBuyDiscount groupBuyDiscount = groupBuyActivityDiscountVO.getGroupBuyDiscount();
 
         SkuVO skuVO = dynamicContext.getSkuVO();
@@ -95,6 +101,10 @@ public class MarketNode extends
     public StrategyHandler<MarketProductEntity, DefaultActivityStrategyFactory.DynamicContext, TrialBalanceEntity> get(
             MarketProductEntity requestParameter, DefaultActivityStrategyFactory.DynamicContext dynamicContext)
             throws Exception {
+        if (null == dynamicContext.getGroupBuyActivityDiscountVO() || null == dynamicContext.getSkuVO() ||
+                null == dynamicContext.getDeductionPrice()) {
+            return errorNode;
+        }
         return endNode;
     }
 }

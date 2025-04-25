@@ -1,8 +1,8 @@
 package com.qx.domain.activity.adapter.repository;
 
 import com.qx.domain.activity.model.valobj.GroupBuyActivityDiscountVO;
+import com.qx.domain.activity.model.valobj.SCSkuActivityVO;
 import com.qx.domain.activity.model.valobj.SkuVO;
-import com.qx.types.design.framework.tree.StrategyHandler;
 
 /**
  * Function:
@@ -11,7 +11,11 @@ import com.qx.types.design.framework.tree.StrategyHandler;
  */
 public interface IActivityRepository {
 
-    GroupBuyActivityDiscountVO queryGroupBuyActivityDiscountVO(String source, String channel);
+    GroupBuyActivityDiscountVO queryGroupBuyActivityDiscountVO(Long activityId);
 
     SkuVO querySkuByGodsId(String goodsId);
+
+
+    SCSkuActivityVO querySCSkuActivityBySCGoodsId(String source, String channel, String goodsId);
+
 }

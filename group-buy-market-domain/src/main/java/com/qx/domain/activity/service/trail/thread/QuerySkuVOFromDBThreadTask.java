@@ -17,6 +17,7 @@ public class QuerySkuVOFromDBThreadTask implements Callable<SkuVO> {
 
     private final IActivityRepository activityRepository;
 
+
     public QuerySkuVOFromDBThreadTask(String goodsId, IActivityRepository activityRepository) {
         this.goodsId = goodsId;
         this.activityRepository = activityRepository;

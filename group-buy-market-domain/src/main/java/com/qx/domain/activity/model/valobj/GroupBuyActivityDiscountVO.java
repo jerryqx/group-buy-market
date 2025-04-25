@@ -29,15 +29,7 @@ public class GroupBuyActivityDiscountVO {
      */
     private String activityName;
 
-    /**
-     * 来源
-     */
-    private String source;
 
-    /**
-     * 渠道
-     */
-    private String channel;
 
     /**
      * 商品ID
