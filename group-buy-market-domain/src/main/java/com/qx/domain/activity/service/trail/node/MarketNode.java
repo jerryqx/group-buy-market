@@ -37,7 +37,7 @@ public class MarketNode extends
     private ThreadPoolExecutor threadPoolExecutor;
 
     @Resource
-    private EndNode endNode;
+    private TagNode tagNode;
 
     @Resource
     private ErrorNode errorNode;
@@ -105,6 +105,6 @@ public class MarketNode extends
                 null == dynamicContext.getDeductionPrice()) {
             return errorNode;
         }
-        return endNode;
+        return tagNode;
     }
 }
