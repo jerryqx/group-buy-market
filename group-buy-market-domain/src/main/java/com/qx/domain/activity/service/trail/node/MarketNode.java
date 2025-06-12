@@ -16,12 +16,12 @@ import com.qx.types.exception.AppException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.util.Map;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-import javax.annotation.Resource;
 
 /**
  * Function:
@@ -50,7 +50,7 @@ public class MarketNode extends
                                DefaultActivityStrategyFactory.DynamicContext dynamicContext) throws Exception {
         // 异步查询活动配置信息
         QueryGroupBuyActivityDiscountVOThreadTask queryGroupBuyActivityDiscountVOThreadTask =
-                new QueryGroupBuyActivityDiscountVOThreadTask(requestParameter.getSource(),
+                new QueryGroupBuyActivityDiscountVOThreadTask(requestParameter.getActivityId(), requestParameter.getSource(),
                         requestParameter.getChannel(), requestParameter.getGoodsId(), repository);
         FutureTask<GroupBuyActivityDiscountVO> groupBuyActivityDiscountVOFutureTask =
                 new FutureTask<>(queryGroupBuyActivityDiscountVOThreadTask);
