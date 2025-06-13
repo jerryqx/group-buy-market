@@ -1,11 +1,19 @@
 package com.qx.domain.activity.service.discount;
 
+import com.alibaba.fastjson.JSON;
+import com.qx.domain.activity.adapter.repository.IActivityRepository;
 import com.qx.domain.activity.model.valobj.DiscountTypeEnum;
 import com.qx.domain.activity.model.valobj.GroupBuyActivityDiscountVO;
+import lombok.extern.slf4j.Slf4j;
 
+import javax.annotation.Resource;
 import java.math.BigDecimal;
 
+@Slf4j
 public abstract class AbstractDiscountCalculateService implements IDiscountCalculateService {
+
+    @Resource
+    private IActivityRepository repository;
 
     @Override
     public BigDecimal calculate(String userId, BigDecimal originalPrice,
@@ -14,6 +22,7 @@ public abstract class AbstractDiscountCalculateService implements IDiscountCalcu
         if (DiscountTypeEnum.TAG.equals(groupBuyDiscount.getDiscountType())) {
             boolean isCrowdRange = filterTagId(userId, groupBuyDiscount.getTagId());
             if (!isCrowdRange) {
+                log.info("折扣计算优惠拦截 userId:{}, 折扣详情: {}", userId, JSON.toJSONString(groupBuyDiscount));
                 return originalPrice;
             }
         }
@@ -23,8 +32,8 @@ public abstract class AbstractDiscountCalculateService implements IDiscountCalcu
 
     // 人群过来 - 限定人群优惠
     private boolean filterTagId(String userId, String tagId) {
-        // todo 后续开发
-        return true;
+
+        return repository.isTagCrowdRange(tagId, userId);
     }
 
     protected abstract BigDecimal doCalculate(BigDecimal originalPrice,

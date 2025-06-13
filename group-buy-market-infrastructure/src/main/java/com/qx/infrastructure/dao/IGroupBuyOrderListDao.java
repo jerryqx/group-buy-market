@@ -10,4 +10,5 @@ public interface IGroupBuyOrderListDao {
 
     GroupBuyOrderList queryNoPayMarketPayOrderByOutTradeNo(GroupBuyOrderList groupBuyOrderListReq);
 
+    Integer queryOrderCountByActivityId(GroupBuyOrderList groupBuyOrderListReq);
 }

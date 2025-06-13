@@ -1,6 +1,7 @@
 package com.qx.domain.trade.adapter.repository;
 
 import com.qx.domain.trade.model.aggregate.GroupBuyOrderAggregate;
+import com.qx.domain.trade.model.entity.GroupBuyActivityEntity;
 import com.qx.domain.trade.model.entity.MarketPayOrderEntity;
 import com.qx.domain.trade.model.valobj.GroupBuyProgressVO;
 
@@ -12,4 +13,7 @@ public interface ITradeRepository {
 
     GroupBuyProgressVO queryGroupBuyProgress(String teamId);
 
+    Integer queryOrderCountByActivityId(Long activityId, String userId);
+
+    GroupBuyActivityEntity queryGroupBuyActivityByActivityId(Long activityId);
 }

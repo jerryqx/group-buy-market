@@ -2,11 +2,10 @@ package com.qx.domain.trade.service;
 
 import com.qx.domain.trade.adapter.repository.ITradeRepository;
 import com.qx.domain.trade.model.aggregate.GroupBuyOrderAggregate;
-import com.qx.domain.trade.model.entity.MarketPayOrderEntity;
-import com.qx.domain.trade.model.entity.PayActivityEntity;
-import com.qx.domain.trade.model.entity.PayDiscountEntity;
-import com.qx.domain.trade.model.entity.UserEntity;
+import com.qx.domain.trade.model.entity.*;
 import com.qx.domain.trade.model.valobj.GroupBuyProgressVO;
+import com.qx.domain.trade.service.factory.TradeRuleFilterFactory;
+import com.qx.types.design.framework.link.model2.chain.BusinessLinkedList;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -19,29 +18,35 @@ public class TradeOrderService implements ITradeOrderService {
     @Resource
     private ITradeRepository repository;
 
+    @Resource
+    private BusinessLinkedList<TradeRuleCommandEntity, TradeRuleFilterFactory.DynamicContext, TradeRuleFilterBackEntity>
+            tradeRuleFilter;
+
     @Override
     public MarketPayOrderEntity queryNoPayMarketPayOrderByOutTradeNo(String userId, String outTradeNo) {
         log.info("拼团交易-查询未支付营销订单:{} outTradeNo:{}", userId, outTradeNo);
-        return  repository.queryNoPayMarketPayOrderByOutTradeNo(userId, outTradeNo);
+        return repository.queryNoPayMarketPayOrderByOutTradeNo(userId, outTradeNo);
 
     }
 
     @Override
     public GroupBuyProgressVO queryGroupBuyProgress(String teamId) {
-        log.info("拼团交易-查询拼单进度:{}", teamId);
-        return repository.queryGroupBuyProgress(teamId);
+        log.info("拼团交易-查询拼单进度:{}", teamId); return repository.queryGroupBuyProgress(teamId);
     }
 
     @Override
-    public MarketPayOrderEntity lockMarketPayOrder(UserEntity userEntity, PayActivityEntity payActivityEntity, PayDiscountEntity payDiscountEntity) {
-        log.info("拼团交易-锁定营销优惠支付订单:{} activityId:{} goodsId:{}", userEntity.getUserId(), payActivityEntity.getActivityId(), payDiscountEntity.getGoodsId());
-
+    public MarketPayOrderEntity lockMarketPayOrder(UserEntity userEntity, PayActivityEntity payActivityEntity,
+                                                   PayDiscountEntity payDiscountEntity) throws Exception {
+        log.info("拼团交易-锁定营销优惠支付订单:{} activityId:{} goodsId:{}", userEntity.getUserId(),
+                payActivityEntity.getActivityId(), payDiscountEntity.getGoodsId());
+        TradeRuleFilterBackEntity tradeRuleFilterBackEntity = tradeRuleFilter.apply(
+                TradeRuleCommandEntity.builder().activityId(payActivityEntity.getActivityId())
+                        .userId(userEntity.getUserId()).build(), new TradeRuleFilterFactory.DynamicContext());
+        Integer userTaskOrderCount = tradeRuleFilterBackEntity.getUserTaskOrderCount();
         // 构建聚合对象
-        GroupBuyOrderAggregate groupBuyOrderAggregate = GroupBuyOrderAggregate.builder()
-                .userEntity(userEntity)
-                .payActivityEntity(payActivityEntity)
-                .payDiscountEntity(payDiscountEntity)
-                .build();
+        GroupBuyOrderAggregate groupBuyOrderAggregate =
+                GroupBuyOrderAggregate.builder().userEntity(userEntity).payActivityEntity(payActivityEntity)
+                        .payDiscountEntity(payDiscountEntity).userTaskOrderCount(userTaskOrderCount).build();
 
         // 锁定聚合订单 - 这会用户只是下单还没有支付。后续会有2个流程；支付成功、超时未支付（回退）
         return repository.lockMarketPayOrder(groupBuyOrderAggregate);

@@ -47,6 +47,9 @@ public class DefaultActivityStrategyFactory {
         // 折扣价格
         BigDecimal deductionPrice;
 
+        // 支付金额
+        BigDecimal payPrice;
+
         // 活动可见性限制
         private boolean visible;
 

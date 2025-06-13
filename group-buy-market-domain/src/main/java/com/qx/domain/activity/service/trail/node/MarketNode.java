@@ -90,10 +90,11 @@ public class MarketNode extends
             throw new AppException(ResponseCode.E0001.getCode(), ResponseCode.E0001.getInfo());
         }
 
-        BigDecimal deductionPrice =
+        BigDecimal payPrice =
                 discountCalculateService.calculate(requestParameter.getUserId(), skuVO.getOriginalPrice(),
                         groupBuyDiscount);
-        dynamicContext.setDeductionPrice(deductionPrice);
+        dynamicContext.setDeductionPrice(skuVO.getOriginalPrice().subtract(payPrice));
+        dynamicContext.setPayPrice(payPrice);
         return router(requestParameter, dynamicContext);
     }
 
