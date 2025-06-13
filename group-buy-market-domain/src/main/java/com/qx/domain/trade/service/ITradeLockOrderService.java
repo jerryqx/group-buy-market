@@ -6,7 +6,7 @@ import com.qx.domain.trade.model.entity.PayDiscountEntity;
 import com.qx.domain.trade.model.entity.UserEntity;
 import com.qx.domain.trade.model.valobj.GroupBuyProgressVO;
 
-public interface ITradeOrderService {
+public interface ITradeLockOrderService {
 
 
 

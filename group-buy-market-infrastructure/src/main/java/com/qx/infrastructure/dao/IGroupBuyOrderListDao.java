@@ -3,6 +3,8 @@ package com.qx.infrastructure.dao;
 import com.qx.infrastructure.dao.po.GroupBuyOrderList;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface IGroupBuyOrderListDao {
 
@@ -11,4 +13,8 @@ public interface IGroupBuyOrderListDao {
     GroupBuyOrderList queryNoPayMarketPayOrderByOutTradeNo(GroupBuyOrderList groupBuyOrderListReq);
 
     Integer queryOrderCountByActivityId(GroupBuyOrderList groupBuyOrderListReq);
+
+    int updateOrderStatus2COMPLETE(GroupBuyOrderList groupBuyOrderListReq);
+
+    List<String> queryGroupBuyCompleteOrderOutTradeNoListByTeamId(String teamId);
 }

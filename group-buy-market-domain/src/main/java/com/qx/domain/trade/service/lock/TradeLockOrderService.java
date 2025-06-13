@@ -1,10 +1,11 @@
-package com.qx.domain.trade.service;
+package com.qx.domain.trade.service.lock;
 
 import com.qx.domain.trade.adapter.repository.ITradeRepository;
 import com.qx.domain.trade.model.aggregate.GroupBuyOrderAggregate;
 import com.qx.domain.trade.model.entity.*;
 import com.qx.domain.trade.model.valobj.GroupBuyProgressVO;
-import com.qx.domain.trade.service.factory.TradeRuleFilterFactory;
+import com.qx.domain.trade.service.ITradeLockOrderService;
+import com.qx.domain.trade.service.lock.factory.TradeRuleFilterFactory;
 import com.qx.types.design.framework.link.model2.chain.BusinessLinkedList;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,7 @@ import javax.annotation.Resource;
 
 @Slf4j
 @Service
-public class TradeOrderService implements ITradeOrderService {
+public class TradeLockOrderService implements ITradeLockOrderService {
 
     @Resource
     private ITradeRepository repository;
@@ -31,7 +32,8 @@ public class TradeOrderService implements ITradeOrderService {
 
     @Override
     public GroupBuyProgressVO queryGroupBuyProgress(String teamId) {
-        log.info("拼团交易-查询拼单进度:{}", teamId); return repository.queryGroupBuyProgress(teamId);
+        log.info("拼团交易-查询拼单进度:{}", teamId);
+        return repository.queryGroupBuyProgress(teamId);
     }
 
     @Override

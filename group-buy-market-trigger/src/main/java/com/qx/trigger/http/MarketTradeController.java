@@ -14,7 +14,7 @@ import com.qx.domain.trade.model.entity.PayActivityEntity;
 import com.qx.domain.trade.model.entity.PayDiscountEntity;
 import com.qx.domain.trade.model.entity.UserEntity;
 import com.qx.domain.trade.model.valobj.GroupBuyProgressVO;
-import com.qx.domain.trade.service.ITradeOrderService;
+import com.qx.domain.trade.service.ITradeLockOrderService;
 import com.qx.types.enums.ResponseCode;
 import com.qx.types.exception.AppException;
 import lombok.extern.slf4j.Slf4j;
@@ -34,7 +34,7 @@ public class MarketTradeController implements IMarketTradeService {
     private IIndexGroupBuyMarketService indexGroupBuyMarketService;
 
     @Resource
-    private ITradeOrderService tradeOrderService;
+    private ITradeLockOrderService tradeOrderService;
 
     @PostMapping(value = "lock_market_pay_order")
     @Override
@@ -96,6 +96,16 @@ public class MarketTradeController implements IMarketTradeService {
                     .goodsId(goodsId)
                     .activityId(activityId)
                     .build());
+
+            // 人群限定
+            if (!trialBalanceEntity.getIsVisible() || !trialBalanceEntity.getIsEnable()) {
+                return Response.<LockMarketPayOrderResponseDTO>builder()
+                        .code(ResponseCode.E0007.getCode())
+                        .info(ResponseCode.E0007.getInfo())
+                        .build();
+            }
+
+
             GroupBuyActivityDiscountVO groupBuyActivityDiscountVO = trialBalanceEntity.getGroupBuyActivityDiscountVO();
             // 锁单
             marketPayOrderEntity = tradeOrderService.lockMarketPayOrder(
