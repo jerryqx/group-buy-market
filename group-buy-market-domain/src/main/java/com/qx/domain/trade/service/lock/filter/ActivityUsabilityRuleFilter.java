@@ -2,9 +2,9 @@ package com.qx.domain.trade.service.lock.filter;
 
 import com.qx.domain.trade.adapter.repository.ITradeRepository;
 import com.qx.domain.trade.model.entity.GroupBuyActivityEntity;
-import com.qx.domain.trade.model.entity.TradeRuleCommandEntity;
-import com.qx.domain.trade.model.entity.TradeRuleFilterBackEntity;
-import com.qx.domain.trade.service.lock.factory.TradeRuleFilterFactory;
+import com.qx.domain.trade.model.entity.TradeLockRuleCommandEntity;
+import com.qx.domain.trade.model.entity.TradeLockRuleFilterBackEntity;
+import com.qx.domain.trade.service.lock.factory.TradeLockRuleFilterFactory;
 import com.qx.types.design.framework.link.model2.handler.ILogicHandler;
 import com.qx.types.enums.ActivityStatusEnumVO;
 import com.qx.types.enums.ResponseCode;
@@ -18,14 +18,14 @@ import java.util.Date;
 @Slf4j
 @Service
 public class ActivityUsabilityRuleFilter implements
-                                         ILogicHandler<TradeRuleCommandEntity, TradeRuleFilterFactory.DynamicContext, TradeRuleFilterBackEntity> {
+        ILogicHandler<TradeLockRuleCommandEntity, TradeLockRuleFilterFactory.DynamicContext, TradeLockRuleFilterBackEntity> {
 
     @Resource
     private ITradeRepository repository;
 
     @Override
-    public TradeRuleFilterBackEntity apply(TradeRuleCommandEntity requestParameter,
-                                           TradeRuleFilterFactory.DynamicContext dynamicContext) throws Exception {
+    public TradeLockRuleFilterBackEntity apply(TradeLockRuleCommandEntity requestParameter,
+                                               TradeLockRuleFilterFactory.DynamicContext dynamicContext) throws Exception {
         log.info("交易规则过滤-活动的可用性校验{} activityId:{}", requestParameter.getUserId(),
                 requestParameter.getActivityId());
 

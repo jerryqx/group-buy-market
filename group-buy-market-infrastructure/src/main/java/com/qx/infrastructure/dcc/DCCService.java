@@ -1,7 +1,11 @@
 package com.qx.infrastructure.dcc;
 
 import com.qx.types.annotations.DCCValue;
+import com.qx.types.common.Constants;
 import org.springframework.stereotype.Service;
+
+import java.util.Arrays;
+import java.util.List;
 
 @Service
 public class DCCService {
@@ -14,6 +18,9 @@ public class DCCService {
 
     @DCCValue("cutRange:100")
     private String cutRange;
+
+    @DCCValue("scBlackList:s02c02")
+    private String scBlackList;
 
     public boolean isDowngradeSwitch() {
         return "1".equals(downgradeSwitch);
@@ -29,5 +36,10 @@ public class DCCService {
         // 判断是否在切量范围内
         return lastTwoDigits <= Integer.parseInt(cutRange);
 
+    }
+
+    public boolean isSCBlackIntercept(String source, String channel) {
+        List<String> list = Arrays.asList(scBlackList.split(Constants.SPLIT));
+        return list.contains(source + channel);
     }
 }
