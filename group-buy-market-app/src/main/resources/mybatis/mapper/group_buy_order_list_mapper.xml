@@ -106,7 +106,6 @@
         from group_buy_order_list
         where activity_id = #{activityId}
           and status in (0, 1)
-        group by team_id
     </select>
 
 </mapper>

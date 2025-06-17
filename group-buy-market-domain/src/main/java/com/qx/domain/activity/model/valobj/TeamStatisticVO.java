@@ -16,6 +16,6 @@ public class TeamStatisticVO {
     private Integer allTeamCount;
     // 成团队伍数量
     private Integer allTeamCompleteCount;
-    // 参团人数总量 - 一个商品的总参团人数
+    // 参团人数总量 - 一个商品的总参团锁单人数
     private Integer allTeamUserCount;
 }
