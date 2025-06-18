@@ -1,0 +1,263 @@
+25-06-11.16:45:52.388 [main            ] INFO  Application            - Starting Application using Java 17.0.15 on qinxiaos-MacBook-Pro.local with PID 53200 (/Users/qinxiao/开发/学习/qx/group-buy-market/group-buy-market-app/target/classes started by qinxiao in /Users/qinxiao/开发/学习/qx/group-buy-market)
+25-06-11.16:45:52.391 [main            ] INFO  Application            - The following 1 profile is active: "dev"
+25-06-11.16:45:52.850 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+25-06-11.16:45:52.852 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+25-06-11.16:45:52.865 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 6 ms. Found 0 Redis repository interfaces.
+25-06-11.16:45:53.025 [main            ] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redisClientConfig' of type [com.qx.config.RedisClientConfig$$EnhancerBySpringCGLIB$$d1745351] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+25-06-11.16:45:53.219 [main            ] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redis.sdk.config-com.qx.config.RedisClientConfigProperties' of type [com.qx.config.RedisClientConfigProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+25-06-11.16:45:53.328 [main            ] INFO  Version                - Redisson 3.26.0
+25-06-11.16:45:53.353 [main            ] WARN  DnsServerAddressStreamProviders - Can not find io.netty.resolver.dns.macos.MacOSDnsServerAddressStreamProvider in the classpath, fallback to system defaults. This may result in incorrect DNS resolutions on MacOS. Check whether you have a dependency on 'io.netty:netty-resolver-dns-native-macos'
+25-06-11.16:45:53.497 [redisson-netty-1-4] INFO  ConnectionsHolder      - 1 connections initialized for 117.72.48.228/117.72.48.228:16379
+25-06-11.16:45:53.765 [redisson-netty-1-13] INFO  ConnectionsHolder      - 5 connections initialized for 117.72.48.228/117.72.48.228:16379
+25-06-11.16:45:53.811 [main            ] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redissonClient' of type [org.redisson.Redisson] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+25-06-11.16:45:53.940 [main            ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8091 (http)
+25-06-11.16:45:53.945 [main            ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8091"]
+25-06-11.16:45:53.945 [main            ] INFO  StandardService        - Starting service [Tomcat]
+25-06-11.16:45:53.945 [main            ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.75]
+25-06-11.16:45:53.993 [main            ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+25-06-11.16:45:53.993 [main            ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1576 ms
+25-06-11.16:45:54.748 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+25-06-11.16:45:54.765 [main            ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8091"]
+25-06-11.16:45:54.770 [main            ] INFO  TomcatWebServer        - Tomcat started on port(s): 8091 (http) with context path ''
+25-06-11.16:45:54.779 [main            ] INFO  Application            - Started Application in 2.702 seconds (JVM running for 3.144)
+25-06-11.16:45:55.043 [RMI TCP Connection(1)-127.0.0.1] INFO  [/]                    - Initializing Spring DispatcherServlet 'dispatcherServlet'
+25-06-11.16:45:55.043 [RMI TCP Connection(1)-127.0.0.1] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+25-06-11.16:45:55.043 [RMI TCP Connection(3)-127.0.0.1] INFO  HikariDataSource       - HikariPool-1 - Starting...
+25-06-11.16:45:55.044 [RMI TCP Connection(1)-127.0.0.1] INFO  DispatcherServlet      - Completed initialization in 1 ms
+25-06-11.16:45:55.614 [RMI TCP Connection(3)-127.0.0.1] INFO  HikariDataSource       - HikariPool-1 - Start completed.
+25-06-11.16:52:15.100 [main            ] INFO  Application            - Starting Application using Java 17.0.15 on qinxiaos-MacBook-Pro.local with PID 54439 (/Users/qinxiao/开发/学习/qx/group-buy-market/group-buy-market-app/target/classes started by qinxiao in /Users/qinxiao/开发/学习/qx/group-buy-market)
+25-06-11.16:52:15.101 [main            ] INFO  Application            - The following 1 profile is active: "dev"
+25-06-11.16:52:15.793 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+25-06-11.16:52:15.795 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+25-06-11.16:52:15.814 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+25-06-11.16:52:15.954 [main            ] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redisClientConfig' of type [com.qx.config.RedisClientConfig$$EnhancerBySpringCGLIB$$7d11280a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+25-06-11.16:52:16.092 [main            ] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redis.sdk.config-com.qx.config.RedisClientConfigProperties' of type [com.qx.config.RedisClientConfigProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+25-06-11.16:52:16.206 [main            ] INFO  Version                - Redisson 3.26.0
+25-06-11.16:52:16.226 [main            ] WARN  DnsServerAddressStreamProviders - Can not find io.netty.resolver.dns.macos.MacOSDnsServerAddressStreamProvider in the classpath, fallback to system defaults. This may result in incorrect DNS resolutions on MacOS. Check whether you have a dependency on 'io.netty:netty-resolver-dns-native-macos'
+25-06-11.16:52:16.498 [redisson-netty-1-4] INFO  ConnectionsHolder      - 1 connections initialized for 117.72.48.228/117.72.48.228:16379
+25-06-11.16:52:17.140 [redisson-netty-1-13] INFO  ConnectionsHolder      - 5 connections initialized for 117.72.48.228/117.72.48.228:16379
+25-06-11.16:52:17.174 [main            ] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redissonClient' of type [org.redisson.Redisson] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+25-06-11.16:52:17.337 [main            ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8091 (http)
+25-06-11.16:52:17.343 [main            ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8091"]
+25-06-11.16:52:17.343 [main            ] INFO  StandardService        - Starting service [Tomcat]
+25-06-11.16:52:17.343 [main            ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.75]
+25-06-11.16:52:17.429 [main            ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+25-06-11.16:52:17.429 [main            ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2296 ms
+25-06-11.16:52:18.572 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+25-06-11.16:52:18.609 [main            ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8091"]
+25-06-11.16:52:18.617 [main            ] INFO  TomcatWebServer        - Tomcat started on port(s): 8091 (http) with context path ''
+25-06-11.16:52:18.628 [main            ] INFO  Application            - Started Application in 3.922 seconds (JVM running for 5.767)
+25-06-11.16:52:40.519 [http-nio-8091-exec-3] INFO  [/]                    - Initializing Spring DispatcherServlet 'dispatcherServlet'
+25-06-11.16:52:40.520 [http-nio-8091-exec-3] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+25-06-11.16:52:40.530 [http-nio-8091-exec-3] INFO  DispatcherServlet      - Completed initialization in 10 ms
+25-06-11.16:53:51.215 [main            ] INFO  Application            - Starting Application using Java 17.0.15 on qinxiaos-MacBook-Pro.local with PID 54791 (/Users/qinxiao/开发/学习/qx/group-buy-market/group-buy-market-app/target/classes started by qinxiao in /Users/qinxiao/开发/学习/qx/group-buy-market)
+25-06-11.16:53:51.217 [main            ] INFO  Application            - The following 1 profile is active: "dev"
+25-06-11.16:53:51.972 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+25-06-11.16:53:51.974 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+25-06-11.16:53:51.992 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+25-06-11.16:53:52.437 [main            ] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redisClientConfig' of type [com.qx.config.RedisClientConfig$$EnhancerBySpringCGLIB$$acd44d2b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+25-06-11.16:53:52.706 [main            ] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redis.sdk.config-com.qx.config.RedisClientConfigProperties' of type [com.qx.config.RedisClientConfigProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+25-06-11.16:53:53.050 [main            ] INFO  Version                - Redisson 3.26.0
+25-06-11.16:53:53.111 [main            ] WARN  DnsServerAddressStreamProviders - Can not find io.netty.resolver.dns.macos.MacOSDnsServerAddressStreamProvider in the classpath, fallback to system defaults. This may result in incorrect DNS resolutions on MacOS. Check whether you have a dependency on 'io.netty:netty-resolver-dns-native-macos'
+25-06-11.16:53:53.440 [redisson-netty-1-6] INFO  ConnectionsHolder      - 1 connections initialized for 117.72.48.228/117.72.48.228:16379
+25-06-11.16:53:53.699 [redisson-netty-1-13] INFO  ConnectionsHolder      - 5 connections initialized for 117.72.48.228/117.72.48.228:16379
+25-06-11.16:53:53.735 [main            ] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redissonClient' of type [org.redisson.Redisson] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+25-06-11.16:53:54.461 [main            ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8091 (http)
+25-06-11.16:53:54.473 [main            ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8091"]
+25-06-11.16:53:54.473 [main            ] INFO  StandardService        - Starting service [Tomcat]
+25-06-11.16:53:54.473 [main            ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.75]
+25-06-11.16:53:54.591 [main            ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+25-06-11.16:53:54.592 [main            ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3343 ms
+25-06-11.16:53:55.762 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+25-06-11.16:53:55.784 [main            ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8091"]
+25-06-11.16:53:55.789 [main            ] INFO  TomcatWebServer        - Tomcat started on port(s): 8091 (http) with context path ''
+25-06-11.16:53:55.799 [main            ] INFO  Application            - Started Application in 4.867 seconds (JVM running for 5.747)
+25-06-11.16:53:56.317 [RMI TCP Connection(6)-127.0.0.1] INFO  HikariDataSource       - HikariPool-1 - Starting...
+25-06-11.16:53:56.318 [RMI TCP Connection(5)-127.0.0.1] INFO  [/]                    - Initializing Spring DispatcherServlet 'dispatcherServlet'
+25-06-11.16:53:56.318 [RMI TCP Connection(5)-127.0.0.1] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+25-06-11.16:53:56.319 [RMI TCP Connection(5)-127.0.0.1] INFO  DispatcherServlet      - Completed initialization in 1 ms
+25-06-11.16:53:57.428 [RMI TCP Connection(6)-127.0.0.1] INFO  HikariDataSource       - HikariPool-1 - Start completed.
+25-06-11.16:54:00.120 [http-nio-8091-exec-1] INFO  DCCController          - DCC 动态配置值变更 key:downgradeSwitch value:1
+25-06-11.16:54:24.149 [RMI TCP Connection(6)-127.0.0.1] WARN  HealthEndpointSupport  - Health contributor org.springframework.boot.actuate.autoconfigure.health.HealthEndpointConfiguration$AdaptedReactiveHealthContributors$1 (redis) took 26573ms to respond
+25-06-11.16:54:24.278 [redisson-3-7    ] INFO  DCCValueBeanFactory    - DCC 节点监听，动态设置值 group_buy_market_dcc_downgradeSwitch 1
+25-06-11.16:56:22.177 [HikariPool-1 housekeeper] WARN  HikariPool             - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=54s625ms).
+25-06-11.16:56:22.194 [http-nio-8091-exec-4] INFO  DCCController          - DCC 动态配置值变更 key:downgradeSwitch value:1
+25-06-11.16:57:03.103 [redisson-3-8    ] INFO  DCCValueBeanFactory    - DCC 节点监听，动态设置值 group_buy_market_dcc_downgradeSwitch 1
+25-06-11.16:57:03.209 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
+25-06-11.17:16:02.761 [main            ] INFO  Application            - Starting Application using Java 17.0.15 on qinxiaos-MacBook-Pro.local with PID 58987 (/Users/qinxiao/开发/学习/qx/group-buy-market/group-buy-market-app/target/classes started by qinxiao in /Users/qinxiao/开发/学习/qx/group-buy-market)
+25-06-11.17:16:02.762 [main            ] INFO  Application            - The following 1 profile is active: "dev"
+25-06-11.17:16:03.259 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+25-06-11.17:16:03.260 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+25-06-11.17:16:03.277 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 8 ms. Found 0 Redis repository interfaces.
+25-06-11.17:16:03.411 [main            ] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redisClientConfig' of type [com.qx.config.RedisClientConfig$$EnhancerBySpringCGLIB$$1eb302e9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+25-06-11.17:16:03.544 [main            ] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redis.sdk.config-com.qx.config.RedisClientConfigProperties' of type [com.qx.config.RedisClientConfigProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+25-06-11.17:16:03.664 [main            ] INFO  Version                - Redisson 3.26.0
+25-06-11.17:16:03.683 [main            ] WARN  DnsServerAddressStreamProviders - Can not find io.netty.resolver.dns.macos.MacOSDnsServerAddressStreamProvider in the classpath, fallback to system defaults. This may result in incorrect DNS resolutions on MacOS. Check whether you have a dependency on 'io.netty:netty-resolver-dns-native-macos'
+25-06-11.17:16:03.914 [redisson-netty-1-4] INFO  ConnectionsHolder      - 1 connections initialized for 117.72.48.228/117.72.48.228:16379
+25-06-11.17:16:04.492 [redisson-netty-1-13] INFO  ConnectionsHolder      - 5 connections initialized for 117.72.48.228/117.72.48.228:16379
+25-06-11.17:16:04.533 [main            ] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redissonClient' of type [org.redisson.Redisson] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+25-06-11.17:16:04.677 [main            ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8091 (http)
+25-06-11.17:16:04.682 [main            ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8091"]
+25-06-11.17:16:04.682 [main            ] INFO  StandardService        - Starting service [Tomcat]
+25-06-11.17:16:04.682 [main            ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.75]
+25-06-11.17:16:04.747 [main            ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+25-06-11.17:16:04.747 [main            ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1963 ms
+25-06-11.17:16:05.783 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+25-06-11.17:16:05.803 [main            ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8091"]
+25-06-11.17:16:05.809 [main            ] INFO  TomcatWebServer        - Tomcat started on port(s): 8091 (http) with context path ''
+25-06-11.17:16:05.818 [main            ] INFO  Application            - Started Application in 3.381 seconds (JVM running for 4.303)
+25-06-11.17:16:06.290 [RMI TCP Connection(2)-127.0.0.1] INFO  HikariDataSource       - HikariPool-1 - Starting...
+25-06-11.17:16:06.290 [RMI TCP Connection(4)-127.0.0.1] INFO  [/]                    - Initializing Spring DispatcherServlet 'dispatcherServlet'
+25-06-11.17:16:06.290 [RMI TCP Connection(4)-127.0.0.1] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+25-06-11.17:16:06.292 [RMI TCP Connection(4)-127.0.0.1] INFO  DispatcherServlet      - Completed initialization in 1 ms
+25-06-11.17:16:06.884 [RMI TCP Connection(2)-127.0.0.1] INFO  HikariDataSource       - HikariPool-1 - Start completed.
+25-06-11.17:24:22.916 [http-nio-8091-exec-1] INFO  DCCController          - DCC 动态配置值变更 key:downgradeSwitch value:1
+25-06-11.17:24:43.879 [redisson-3-7    ] INFO  DCCValueBeanFactory    - DCC 节点监听，动态设置值 group_buy_market_dcc_downgradeSwitch 1
+25-06-11.17:26:22.994 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
+25-06-11.17:26:23.383 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown completed.
+25-06-11.18:06:05.397 [main            ] INFO  Application            - Starting Application using Java 17.0.15 on qinxiaos-MacBook-Pro.local with PID 67771 (/Users/qinxiao/开发/学习/qx/group-buy-market/group-buy-market-app/target/classes started by qinxiao in /Users/qinxiao/开发/学习/qx/group-buy-market)
+25-06-11.18:06:05.403 [main            ] INFO  Application            - The following 1 profile is active: "dev"
+25-06-11.18:06:05.844 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+25-06-11.18:06:05.850 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+25-06-11.18:06:05.868 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 10 ms. Found 0 Redis repository interfaces.
+25-06-11.18:06:06.006 [main            ] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redisClientConfig' of type [com.qx.config.RedisClientConfig$$EnhancerBySpringCGLIB$$a36d6c89] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+25-06-11.18:06:06.139 [main            ] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redis.sdk.config-com.qx.config.RedisClientConfigProperties' of type [com.qx.config.RedisClientConfigProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+25-06-11.18:06:06.240 [main            ] INFO  Version                - Redisson 3.26.0
+25-06-11.18:06:06.257 [main            ] WARN  DnsServerAddressStreamProviders - Can not find io.netty.resolver.dns.macos.MacOSDnsServerAddressStreamProvider in the classpath, fallback to system defaults. This may result in incorrect DNS resolutions on MacOS. Check whether you have a dependency on 'io.netty:netty-resolver-dns-native-macos'
+25-06-11.18:06:06.398 [redisson-netty-1-4] INFO  ConnectionsHolder      - 1 connections initialized for 117.72.48.228/117.72.48.228:16379
+25-06-11.18:06:06.670 [redisson-netty-1-13] INFO  ConnectionsHolder      - 5 connections initialized for 117.72.48.228/117.72.48.228:16379
+25-06-11.18:06:06.712 [main            ] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redissonClient' of type [org.redisson.Redisson] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+25-06-11.18:06:06.837 [main            ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8091 (http)
+25-06-11.18:06:06.841 [main            ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8091"]
+25-06-11.18:06:06.841 [main            ] INFO  StandardService        - Starting service [Tomcat]
+25-06-11.18:06:06.841 [main            ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.75]
+25-06-11.18:06:06.892 [main            ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+25-06-11.18:06:06.892 [main            ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1464 ms
+25-06-11.18:06:07.672 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+25-06-11.18:06:07.690 [main            ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8091"]
+25-06-11.18:06:07.695 [main            ] INFO  TomcatWebServer        - Tomcat started on port(s): 8091 (http) with context path ''
+25-06-11.18:06:07.704 [main            ] INFO  Application            - Started Application in 2.556 seconds (JVM running for 2.962)
+25-06-11.18:06:08.027 [RMI TCP Connection(1)-198.19.249.3] INFO  HikariDataSource       - HikariPool-1 - Starting...
+25-06-11.18:06:08.029 [RMI TCP Connection(2)-198.19.249.3] INFO  [/]                    - Initializing Spring DispatcherServlet 'dispatcherServlet'
+25-06-11.18:06:08.029 [RMI TCP Connection(2)-198.19.249.3] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+25-06-11.18:06:08.030 [RMI TCP Connection(2)-198.19.249.3] INFO  DispatcherServlet      - Completed initialization in 1 ms
+25-06-11.18:06:08.688 [RMI TCP Connection(1)-198.19.249.3] INFO  HikariDataSource       - HikariPool-1 - Start completed.
+25-06-11.18:06:12.494 [http-nio-8091-exec-1] INFO  DCCController          - DCC 动态配置值变更 key:downgradeSwitch value:0
+25-06-11.18:06:12.596 [redisson-3-7    ] INFO  DCCValueBeanFactory    - DCC 节点监听，动态设置值 group_buy_market_dcc_downgradeSwitch 0
+25-06-11.18:06:30.242 [http-nio-8091-exec-5] INFO  DCCController          - DCC 动态配置值变更 key:cutRange value:0*/
+25-06-11.18:06:33.594 [http-nio-8091-exec-8] INFO  DCCController          - DCC 动态配置值变更 key:cutRange value:0
+25-06-11.18:06:37.294 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
+25-06-11.18:08:36.010 [main            ] INFO  Application            - Starting Application using Java 17.0.15 on qinxiaos-MacBook-Pro.local with PID 68190 (/Users/qinxiao/开发/学习/qx/group-buy-market/group-buy-market-app/target/classes started by qinxiao in /Users/qinxiao/开发/学习/qx/group-buy-market)
+25-06-11.18:08:36.010 [main            ] INFO  Application            - The following 1 profile is active: "dev"
+25-06-11.18:08:36.463 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+25-06-11.18:08:36.465 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+25-06-11.18:08:36.484 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+25-06-11.18:08:36.640 [main            ] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redisClientConfig' of type [com.qx.config.RedisClientConfig$$EnhancerBySpringCGLIB$$e265e509] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+25-06-11.18:08:36.766 [main            ] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redis.sdk.config-com.qx.config.RedisClientConfigProperties' of type [com.qx.config.RedisClientConfigProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+25-06-11.18:08:37.010 [main            ] INFO  Version                - Redisson 3.26.0
+25-06-11.18:08:37.039 [main            ] WARN  DnsServerAddressStreamProviders - Can not find io.netty.resolver.dns.macos.MacOSDnsServerAddressStreamProvider in the classpath, fallback to system defaults. This may result in incorrect DNS resolutions on MacOS. Check whether you have a dependency on 'io.netty:netty-resolver-dns-native-macos'
+25-06-11.18:08:37.317 [redisson-netty-1-4] INFO  ConnectionsHolder      - 1 connections initialized for 117.72.48.228/117.72.48.228:16379
+25-06-11.18:08:37.675 [redisson-netty-1-13] INFO  ConnectionsHolder      - 5 connections initialized for 117.72.48.228/117.72.48.228:16379
+25-06-11.18:08:37.710 [main            ] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redissonClient' of type [org.redisson.Redisson] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+25-06-11.18:08:37.877 [main            ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8091 (http)
+25-06-11.18:08:37.885 [main            ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8091"]
+25-06-11.18:08:37.885 [main            ] INFO  StandardService        - Starting service [Tomcat]
+25-06-11.18:08:37.885 [main            ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.75]
+25-06-11.18:08:37.953 [main            ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+25-06-11.18:08:37.954 [main            ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1924 ms
+25-06-11.18:08:39.500 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+25-06-11.18:08:39.524 [main            ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8091"]
+25-06-11.18:08:39.531 [main            ] INFO  TomcatWebServer        - Tomcat started on port(s): 8091 (http) with context path ''
+25-06-11.18:08:39.542 [main            ] INFO  Application            - Started Application in 3.779 seconds (JVM running for 4.489)
+25-06-11.18:08:40.034 [RMI TCP Connection(8)-198.19.249.3] INFO  [/]                    - Initializing Spring DispatcherServlet 'dispatcherServlet'
+25-06-11.18:08:40.034 [RMI TCP Connection(8)-198.19.249.3] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+25-06-11.18:08:40.036 [RMI TCP Connection(8)-198.19.249.3] INFO  DispatcherServlet      - Completed initialization in 2 ms
+25-06-11.18:08:40.037 [RMI TCP Connection(5)-198.19.249.3] INFO  HikariDataSource       - HikariPool-1 - Starting...
+25-06-11.18:08:40.679 [RMI TCP Connection(5)-198.19.249.3] INFO  HikariDataSource       - HikariPool-1 - Start completed.
+25-06-11.18:09:05.518 [http-nio-8091-exec-1] INFO  DCCController          - DCC 动态配置值变更 key:cutRange value:0
+25-06-11.18:09:22.464 [http-nio-8091-exec-4] INFO  DCCController          - DCC 动态配置值变更 key:cutRange value:0
+25-06-11.18:09:40.602 [http-nio-8091-exec-7] INFO  DCCController          - DCC 动态配置值变更 key:cutRange value:0
+25-06-11.18:09:47.626 [http-nio-8091-exec-9] INFO  DCCController          - DCC 动态配置值变更 key:cutRange value:0
+25-06-11.18:09:54.744 [http-nio-8091-exec-2] INFO  DCCController          - DCC 动态配置值变更 key:cutRange value:0
+25-06-11.18:10:34.176 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
+25-06-11.18:10:51.981 [main            ] INFO  Application            - Starting Application using Java 17.0.15 on qinxiaos-MacBook-Pro.local with PID 68612 (/Users/qinxiao/开发/学习/qx/group-buy-market/group-buy-market-app/target/classes started by qinxiao in /Users/qinxiao/开发/学习/qx/group-buy-market)
+25-06-11.18:10:51.981 [main            ] INFO  Application            - The following 1 profile is active: "dev"
+25-06-11.18:10:52.414 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+25-06-11.18:10:52.415 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+25-06-11.18:10:52.430 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
+25-06-11.18:10:52.557 [main            ] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redisClientConfig' of type [com.qx.config.RedisClientConfig$$EnhancerBySpringCGLIB$$dcfc57ff] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+25-06-11.18:10:52.685 [main            ] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redis.sdk.config-com.qx.config.RedisClientConfigProperties' of type [com.qx.config.RedisClientConfigProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+25-06-11.18:10:52.797 [main            ] INFO  Version                - Redisson 3.26.0
+25-06-11.18:10:52.815 [main            ] WARN  DnsServerAddressStreamProviders - Can not find io.netty.resolver.dns.macos.MacOSDnsServerAddressStreamProvider in the classpath, fallback to system defaults. This may result in incorrect DNS resolutions on MacOS. Check whether you have a dependency on 'io.netty:netty-resolver-dns-native-macos'
+25-06-11.18:10:52.997 [redisson-netty-1-4] INFO  ConnectionsHolder      - 1 connections initialized for 117.72.48.228/117.72.48.228:16379
+25-06-11.18:10:53.357 [redisson-netty-1-13] INFO  ConnectionsHolder      - 5 connections initialized for 117.72.48.228/117.72.48.228:16379
+25-06-11.18:10:53.396 [main            ] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redissonClient' of type [org.redisson.Redisson] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+25-06-11.18:10:53.529 [main            ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8091 (http)
+25-06-11.18:10:53.534 [main            ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8091"]
+25-06-11.18:10:53.534 [main            ] INFO  StandardService        - Starting service [Tomcat]
+25-06-11.18:10:53.534 [main            ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.75]
+25-06-11.18:10:53.581 [main            ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+25-06-11.18:10:53.582 [main            ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1582 ms
+25-06-11.18:11:35.593 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+25-06-11.18:11:35.612 [main            ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8091"]
+25-06-11.18:11:35.618 [main            ] INFO  TomcatWebServer        - Tomcat started on port(s): 8091 (http) with context path ''
+25-06-11.18:11:35.628 [main            ] INFO  Application            - Started Application in 43.864 seconds (JVM running for 44.685)
+25-06-11.18:11:36.201 [RMI TCP Connection(4)-198.19.249.3] INFO  [/]                    - Initializing Spring DispatcherServlet 'dispatcherServlet'
+25-06-11.18:11:36.201 [RMI TCP Connection(4)-198.19.249.3] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+25-06-11.18:11:36.202 [RMI TCP Connection(4)-198.19.249.3] INFO  DispatcherServlet      - Completed initialization in 1 ms
+25-06-11.18:11:36.202 [RMI TCP Connection(1)-198.19.249.3] INFO  HikariDataSource       - HikariPool-1 - Starting...
+25-06-11.18:11:36.762 [RMI TCP Connection(1)-198.19.249.3] INFO  HikariDataSource       - HikariPool-1 - Start completed.
+25-06-11.18:11:41.804 [http-nio-8091-exec-1] INFO  DCCController          - DCC 动态配置值变更 key:cutRange value:0
+25-06-11.18:12:00.278 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
+25-06-11.18:12:03.070 [main            ] INFO  Application            - Starting Application using Java 17.0.15 on qinxiaos-MacBook-Pro.local with PID 68818 (/Users/qinxiao/开发/学习/qx/group-buy-market/group-buy-market-app/target/classes started by qinxiao in /Users/qinxiao/开发/学习/qx/group-buy-market)
+25-06-11.18:12:03.071 [main            ] INFO  Application            - The following 1 profile is active: "dev"
+25-06-11.18:12:03.541 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+25-06-11.18:12:03.542 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+25-06-11.18:12:03.557 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
+25-06-11.18:12:03.684 [main            ] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redisClientConfig' of type [com.qx.config.RedisClientConfig$$EnhancerBySpringCGLIB$$dcfc57ff] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+25-06-11.18:12:03.810 [main            ] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redis.sdk.config-com.qx.config.RedisClientConfigProperties' of type [com.qx.config.RedisClientConfigProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+25-06-11.18:12:03.917 [main            ] INFO  Version                - Redisson 3.26.0
+25-06-11.18:12:03.933 [main            ] WARN  DnsServerAddressStreamProviders - Can not find io.netty.resolver.dns.macos.MacOSDnsServerAddressStreamProvider in the classpath, fallback to system defaults. This may result in incorrect DNS resolutions on MacOS. Check whether you have a dependency on 'io.netty:netty-resolver-dns-native-macos'
+25-06-11.18:12:04.142 [redisson-netty-1-4] INFO  ConnectionsHolder      - 1 connections initialized for 117.72.48.228/117.72.48.228:16379
+25-06-11.18:12:04.571 [redisson-netty-1-13] INFO  ConnectionsHolder      - 5 connections initialized for 117.72.48.228/117.72.48.228:16379
+25-06-11.18:12:04.613 [main            ] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redissonClient' of type [org.redisson.Redisson] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+25-06-11.18:12:04.749 [main            ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8091 (http)
+25-06-11.18:12:04.755 [main            ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8091"]
+25-06-11.18:12:04.755 [main            ] INFO  StandardService        - Starting service [Tomcat]
+25-06-11.18:12:04.755 [main            ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.75]
+25-06-11.18:12:04.801 [main            ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+25-06-11.18:12:04.801 [main            ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1706 ms
+25-06-11.18:12:47.661 [main            ] INFO  Application            - Starting Application using Java 17.0.15 on qinxiaos-MacBook-Pro.local with PID 68939 (/Users/qinxiao/开发/学习/qx/group-buy-market/group-buy-market-app/target/classes started by qinxiao in /Users/qinxiao/开发/学习/qx/group-buy-market)
+25-06-11.18:12:47.662 [main            ] INFO  Application            - The following 1 profile is active: "dev"
+25-06-11.18:12:48.059 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+25-06-11.18:12:48.061 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+25-06-11.18:12:48.075 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 7 ms. Found 0 Redis repository interfaces.
+25-06-11.18:12:48.188 [main            ] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redisClientConfig' of type [com.qx.config.RedisClientConfig$$EnhancerBySpringCGLIB$$2a428ded] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+25-06-11.18:12:48.303 [main            ] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redis.sdk.config-com.qx.config.RedisClientConfigProperties' of type [com.qx.config.RedisClientConfigProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+25-06-11.18:12:48.397 [main            ] INFO  Version                - Redisson 3.26.0
+25-06-11.18:12:48.411 [main            ] WARN  DnsServerAddressStreamProviders - Can not find io.netty.resolver.dns.macos.MacOSDnsServerAddressStreamProvider in the classpath, fallback to system defaults. This may result in incorrect DNS resolutions on MacOS. Check whether you have a dependency on 'io.netty:netty-resolver-dns-native-macos'
+25-06-11.18:12:48.575 [redisson-netty-1-4] INFO  ConnectionsHolder      - 1 connections initialized for 117.72.48.228/117.72.48.228:16379
+25-06-11.18:12:48.985 [redisson-netty-1-13] INFO  ConnectionsHolder      - 5 connections initialized for 117.72.48.228/117.72.48.228:16379
+25-06-11.18:12:49.026 [main            ] INFO  PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redissonClient' of type [org.redisson.Redisson] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+25-06-11.18:12:49.143 [main            ] INFO  TomcatWebServer        - Tomcat initialized with port(s): 8091 (http)
+25-06-11.18:12:49.147 [main            ] INFO  Http11NioProtocol      - Initializing ProtocolHandler ["http-nio-8091"]
+25-06-11.18:12:49.147 [main            ] INFO  StandardService        - Starting service [Tomcat]
+25-06-11.18:12:49.147 [main            ] INFO  StandardEngine         - Starting Servlet engine: [Apache Tomcat/9.0.75]
+25-06-11.18:12:49.189 [main            ] INFO  [/]                    - Initializing Spring embedded WebApplicationContext
+25-06-11.18:12:49.189 [main            ] INFO  ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1503 ms
+25-06-11.18:12:49.917 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+25-06-11.18:12:49.934 [main            ] INFO  Http11NioProtocol      - Starting ProtocolHandler ["http-nio-8091"]
+25-06-11.18:12:49.939 [main            ] INFO  TomcatWebServer        - Tomcat started on port(s): 8091 (http) with context path ''
+25-06-11.18:12:49.947 [main            ] INFO  Application            - Started Application in 2.506 seconds (JVM running for 2.788)
+25-06-11.18:12:50.344 [RMI TCP Connection(2)-198.19.249.3] INFO  [/]                    - Initializing Spring DispatcherServlet 'dispatcherServlet'
+25-06-11.18:12:50.345 [RMI TCP Connection(2)-198.19.249.3] INFO  DispatcherServlet      - Initializing Servlet 'dispatcherServlet'
+25-06-11.18:12:50.345 [RMI TCP Connection(1)-198.19.249.3] INFO  HikariDataSource       - HikariPool-1 - Starting...
+25-06-11.18:12:50.346 [RMI TCP Connection(2)-198.19.249.3] INFO  DispatcherServlet      - Completed initialization in 1 ms
+25-06-11.18:12:50.966 [RMI TCP Connection(1)-198.19.249.3] INFO  HikariDataSource       - HikariPool-1 - Start completed.
+25-06-11.18:12:52.311 [http-nio-8091-exec-1] INFO  DCCController          - DCC 动态配置值变更 key:cutRange value:0
+25-06-11.18:12:52.412 [redisson-3-7    ] INFO  DCCValueBeanFactory    - DCC 节点监听，动态设置值 group_buy_market_dcc_cutRange 0
+25-06-11.18:12:54.191 [http-nio-8091-exec-2] INFO  DCCController          - DCC 动态配置值变更 key:cutRange value:0
+25-06-11.18:12:54.334 [redisson-3-8    ] INFO  DCCValueBeanFactory    - DCC 节点监听，动态设置值 group_buy_market_dcc_cutRange 0
+25-06-11.18:12:55.228 [http-nio-8091-exec-3] INFO  DCCController          - DCC 动态配置值变更 key:cutRange value:0
+25-06-11.18:12:55.339 [redisson-3-9    ] INFO  DCCValueBeanFactory    - DCC 节点监听，动态设置值 group_buy_market_dcc_cutRange 0
+25-06-11.18:13:22.152 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
