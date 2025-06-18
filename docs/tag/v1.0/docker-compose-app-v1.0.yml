@@ -15,8 +15,8 @@ services:
   # 原镜像，需要自己构建；fuzhengwei/group-buy-market-app:1.2
   # 代理镜像（小傅哥打包好的，可以直接使用）； registry.cn-hangzhou.aliyuncs.com/xfg-studio/group-buy-market-app:1.2
   group-buy-market:
-    image: registry.cn-hangzhou.aliyuncs.com/xfg-studio/group-buy-market-app:1.2
-    #    image: fuzhengwei/group-buy-market-app:1.2
+    #image: registry.cn-hangzhou.aliyuncs.com/xfg-studio/group-buy-market-app:1.2
+    image: qx/group-buy-market-app:1.2
     container_name: group-buy-market-app
     restart: on-failure
     ports:
@@ -62,24 +62,6 @@ services:
       start_period: 15s
     networks:
       - my-network
-
-  # phpmyadmin https://hub.docker.com/_/phpmyadmin
-  phpmyadmin:
-    image: registry.cn-hangzhou.aliyuncs.com/xfg-studio/phpmyadmin:5.2.1
-    container_name: phpmyadmin
-    hostname: phpmyadmin
-    ports:
-      - 8899:80
-    environment:
-      - PMA_HOST=mysql
-      - PMA_PORT=3306
-      - MYSQL_ROOT_PASSWORD=123456
-    depends_on:
-      mysql:
-        condition: service_healthy
-    networks:
-      - my-network
-
   # Redis
   redis:
     image: registry.cn-hangzhou.aliyuncs.com/xfg-studio/redis:6.2
@@ -99,28 +81,6 @@ services:
       interval: 10s
       timeout: 5s
       retries: 3
-
-  # RedisAdmin https://github.com/joeferner/redis-commander
-  # 账密 admin/admin
-  redis-admin:
-    image: registry.cn-hangzhou.aliyuncs.com/xfg-studio/redis-commander:0.8.0
-    container_name: redis-admin
-    hostname: redis-commander
-    restart: always
-    ports:
-      - 8081:8081
-    environment:
-      - REDIS_HOSTS=local:redis:6379
-      - HTTP_USER=admin
-      - HTTP_PASSWORD=admin
-      - LANG=C.UTF-8
-      - LANGUAGE=C.UTF-8
-      - LC_ALL=C.UTF-8
-    networks:
-      - my-network
-    depends_on:
-      redis:
-        condition: service_healthy
 
 networks:
   my-network:
