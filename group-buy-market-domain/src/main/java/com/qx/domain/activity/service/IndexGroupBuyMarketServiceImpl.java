@@ -7,6 +7,7 @@ import com.qx.domain.activity.model.entity.UserGroupBuyOrderDetailEntity;
 import com.qx.domain.activity.model.valobj.TeamStatisticVO;
 import com.qx.domain.activity.service.trail.factory.DefaultActivityStrategyFactory;
 import com.qx.types.design.framework.tree.StrategyHandler;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -19,6 +20,7 @@ import java.util.List;
  *
  * @author 秦啸
  */
+@Slf4j
 @Service
 public class IndexGroupBuyMarketServiceImpl implements IIndexGroupBuyMarketService {
 
@@ -36,6 +38,7 @@ public class IndexGroupBuyMarketServiceImpl implements IIndexGroupBuyMarketServi
 
     @Override
     public List<UserGroupBuyOrderDetailEntity> queryInProgressUserGroupBuyOrderDetailList(Long activityId, String userId, Integer ownerCount, Integer randomCount) {
+        log.info("查询拼团进度，指定 activityId:{}, userId:{}, ownerCount:{}, randomCount:{}", activityId, userId, ownerCount, randomCount);
         List<UserGroupBuyOrderDetailEntity> unionAllList = new ArrayList<>();
         // 查询个人拼团数据
         if (0 != ownerCount) {

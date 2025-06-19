@@ -101,8 +101,14 @@
     <springProfile name="dev">
         <logger name="com.nmys.view" level="debug"/>
     </springProfile>
-
-    <root level="info">
+    <logger name="com.qx.infrastructure.dao" level="DEBUG"/>
+    <logger name="org.mybatis" level="DEBUG"/>
+    <logger name="java.sql" level="DEBUG"/>
+    <logger name="java.sql.Connection" level="DEBUG"/>
+    <logger name="java.sql.Statement" level="DEBUG"/>
+    <logger name="java.sql.PreparedStatement" level="DEBUG"/>
+    <logger name="java.sql.ResultSet" level="DEBUG"/>
+    <root level="DEBUG">
         <appender-ref ref="CONSOLE"/>
         <!-- 异步日志-INFO -->
         <appender-ref ref="ASYNC_FILE_INFO"/>
