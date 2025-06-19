@@ -7,6 +7,7 @@ import com.qx.infrastructure.dao.*;
 import com.qx.infrastructure.dao.po.*;
 import com.qx.infrastructure.dcc.DCCService;
 import com.qx.infrastructure.redis.IRedisService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.redisson.api.RBitSet;
 import org.springframework.stereotype.Repository;
@@ -20,6 +21,7 @@ import java.util.stream.Collectors;
  *
  * @author 秦啸
  */
+@Slf4j
 @Repository
 public class ActivityRepository implements IActivityRepository {
 
@@ -196,13 +198,13 @@ public class ActivityRepository implements IActivityRepository {
             // 获取前 randomCount 个元素
             groupBuyOrderLists = groupBuyOrderLists.subList(0, randomCount);
         }
-
+        log.info("queryInProgressUserGroupBuyOrderDetailListByRandom groupBuyOrderLists: {}", groupBuyOrderLists);
         // 2. 过滤队伍获取 TeamId,判断 teamId 是否为 null
         Set<String> teamIds =
                 groupBuyOrderLists.stream().map(GroupBuyOrderList::getTeamId)
                         .filter(teamId -> !StringUtils.isBlank(teamId))
                         .collect(Collectors.toSet());
-
+        log.info("queryInProgressUserGroupBuyOrderDetailListByRandom teamIds: {}", teamIds);
         // 3. 查询队伍明细， 组装Map 结果
         List<GroupBuyOrder> groupBuyOrders = groupBuyOrderDao.queryGroupBuyProgressByTeamIds(teamIds);
         if (null == groupBuyOrders || groupBuyOrders.isEmpty()) return null;
