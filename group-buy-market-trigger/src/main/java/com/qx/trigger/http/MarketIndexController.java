@@ -55,14 +55,15 @@ public class MarketIndexController implements IMarketIndexService {
                     .channel(requestDTO.getChannel())
                     .goodsId(requestDTO.getGoodsId())
                     .build());
-
+            log.info("营销优惠试算结果:{}", JSON.toJSONString(trialBalanceEntity));
             GroupBuyActivityDiscountVO groupBuyActivityDiscountVO = trialBalanceEntity.getGroupBuyActivityDiscountVO();
             Long activityId = groupBuyActivityDiscountVO.getActivityId();
             // 2. 查询拼团组队
             List<UserGroupBuyOrderDetailEntity> userGroupBuyOrderDetailEntities = indexGroupBuyMarketService.queryInProgressUserGroupBuyOrderDetailList(activityId, requestDTO.getUserId(), 1, 2);
+            log.info("查询拼团组队结果:{}", JSON.toJSONString(userGroupBuyOrderDetailEntities));
             // 3. 统计拼团数据
             TeamStatisticVO teamStatisticVO = indexGroupBuyMarketService.queryTeamStatisticByActivityId(activityId);
-
+            log.info("统计拼团数据结果:{}", JSON.toJSONString(teamStatisticVO));
 
             GoodsMarketResponseDTO.Goods goods = GoodsMarketResponseDTO.Goods.builder()
                     .goodsId(trialBalanceEntity.getGoodsId())
