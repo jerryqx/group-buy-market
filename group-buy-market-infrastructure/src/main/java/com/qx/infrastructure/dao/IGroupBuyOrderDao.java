@@ -26,9 +26,9 @@ public interface IGroupBuyOrderDao {
 
     List<GroupBuyOrder> queryGroupBuyProgressByTeamIds(@Param("teamIds") Set<String> teamIds);
 
-    Integer queryAllTeamCount(Set<String> teamIds);
+    Integer queryAllTeamCount(@Param("teamIds") Set<String> teamIds);
 
-    Integer queryAllTeamCompleteCount(Set<String> teamIds);
+    Integer queryAllTeamCompleteCount(@Param("teamIds") Set<String> teamIds);
 
-    Integer queryAllUserCount(Set<String> teamIds);
+    Integer queryAllUserCount(@Param("teamIds") Set<String> teamIds);
 }
