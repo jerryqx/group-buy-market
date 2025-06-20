@@ -1,5 +1,6 @@
 # 基础镜像
-FROM openjdk:8-jre-slim
+FROM registry.cn-hangzhou.aliyuncs.com/xfg-studio/openjdk:8-jre-slim
+
 
 # 作者
 MAINTAINER xiaofuge
