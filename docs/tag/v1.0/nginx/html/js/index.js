@@ -48,6 +48,12 @@ class Countdown {
     }
 
     parseTime(timeString) {
+        // 新增：如果时间字符串包含非数字字符，则提取数字部分
+        if (/[^d:]/.test(timeString)) {
+            const match = timeString.match(/(\d+:\d+:\d+)/);
+            timeString = match ? match[1] : '00:00:00';
+        }
+
         const [hours, minutes, seconds] = timeString.split(':').map(Number);
         return hours * 3600 + minutes * 60 + seconds;
     }
