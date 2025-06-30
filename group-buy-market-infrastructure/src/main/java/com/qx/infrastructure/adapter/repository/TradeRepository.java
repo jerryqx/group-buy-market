@@ -95,23 +95,7 @@ public class TradeRepository implements ITradeRepository {
 
         // 使用 RandomStringUtils.randomNumeric 替代公司里使用的雪花算法UUID
         String orderId = RandomStringUtils.randomNumeric(12);
-        GroupBuyOrderList groupBuyOrderList = GroupBuyOrderList.builder()
-                .userId(userEntity.getUserId())
-                .teamId(teamId)
-                .orderId(orderId)
-                .activityId(payActivityEntity.getActivityId())
-                .startTime(payActivityEntity.getStartTime())
-                .endTime(payActivityEntity.getEndTime())
-                .goodsId(payDiscountEntity.getGoodsId())
-                .source(payDiscountEntity.getSource())
-                .channel(payDiscountEntity.getChannel())
-                .originalPrice(payDiscountEntity.getOriginalPrice())
-                .deductionPrice(payDiscountEntity.getDeductionPrice())
-                .payPrice(payDiscountEntity.getPayPrice())
-                .status(TradeOrderStatusEnumVO.CREATE.getCode())
-                .outTradeNo(payDiscountEntity.getOutTradeNo())
-                .bizId(payActivityEntity.getActivityId() + Constants.UNDERLINE + userEntity.getUserId() + Constants.UNDERLINE + (groupBuyOrderAggregate.getUserTaskOrderCount() + 1))
-                .build();
+        GroupBuyOrderList groupBuyOrderList = GroupBuyOrderList.builder().userId(userEntity.getUserId()).teamId(teamId).orderId(orderId).activityId(payActivityEntity.getActivityId()).startTime(payActivityEntity.getStartTime()).endTime(payActivityEntity.getEndTime()).goodsId(payDiscountEntity.getGoodsId()).source(payDiscountEntity.getSource()).channel(payDiscountEntity.getChannel()).originalPrice(payDiscountEntity.getOriginalPrice()).deductionPrice(payDiscountEntity.getDeductionPrice()).payPrice(payDiscountEntity.getPayPrice()).status(TradeOrderStatusEnumVO.CREATE.getCode()).outTradeNo(payDiscountEntity.getOutTradeNo()).bizId(payActivityEntity.getActivityId() + Constants.UNDERLINE + userEntity.getUserId() + Constants.UNDERLINE + (groupBuyOrderAggregate.getUserTaskOrderCount() + 1)).build();
         try {
             // 写入拼团记录
             groupBuyOrderListDao.insert(groupBuyOrderList);
@@ -119,9 +103,7 @@ public class TradeRepository implements ITradeRepository {
             throw new AppException(ResponseCode.INDEX_EXCEPTION);
 
         }
-        return MarketPayOrderEntity.builder().orderId(orderId).deductionPrice(payDiscountEntity.getDeductionPrice())
-                .originalPrice(payDiscountEntity.getOriginalPrice())
-                .payPrice(payDiscountEntity.getPayPrice()).tradeOrderStatusEnumVO(TradeOrderStatusEnumVO.CREATE).teamId(teamId).build();
+        return MarketPayOrderEntity.builder().orderId(orderId).deductionPrice(payDiscountEntity.getDeductionPrice()).originalPrice(payDiscountEntity.getOriginalPrice()).payPrice(payDiscountEntity.getPayPrice()).tradeOrderStatusEnumVO(TradeOrderStatusEnumVO.CREATE).teamId(teamId).build();
     }
 
     @Override
