@@ -85,7 +85,7 @@ services:
       - TZ=PRC
       - SERVER_PORT=8091
       - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=b8B6llKKoo00oo00Il__
+      - SPRING_DATASOURCE_PASSWORD=123456
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/group_buy_market?serverTimezone=UTC&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Shanghai
       - SPRING_DATASOURCE_DRIVER_CLASS_NAME=com.mysql.cj.jdbc.Driver
       - SPRING_HIKARI_POOL_NAME=Retail_HikariCP
