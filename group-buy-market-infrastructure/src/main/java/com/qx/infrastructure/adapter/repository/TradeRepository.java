@@ -18,11 +18,13 @@ import com.qx.infrastructure.dao.po.GroupBuyOrder;
 import com.qx.infrastructure.dao.po.GroupBuyOrderList;
 import com.qx.infrastructure.dao.po.NotifyTask;
 import com.qx.infrastructure.dcc.DCCService;
+import com.qx.infrastructure.redis.IRedisService;
 import com.qx.types.common.Constants;
 import com.qx.types.enums.ActivityStatusEnumVO;
 import com.qx.types.enums.GroupBuyOrderEnumVO;
 import com.qx.types.enums.ResponseCode;
 import com.qx.types.exception.AppException;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
@@ -33,8 +35,10 @@ import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Repository
 public class TradeRepository implements ITradeRepository {
 
@@ -55,6 +59,9 @@ public class TradeRepository implements ITradeRepository {
 
     @Value("${spring.rabbitmq.config.producer.topic_team_success.routing_key}")
     private String topic_team_success;
+
+    @Resource
+    private IRedisService redisService;
 
     @Override
     public MarketPayOrderEntity queryNoPayMarketPayOrderByOutTradeNo(String userId, String outTradeNo) {
@@ -220,7 +227,14 @@ public class TradeRepository implements ITradeRepository {
         if (CollectionUtils.isEmpty(notifyTasks)) {
             return Collections.emptyList();
         }
-        return notifyTasks.stream().map(notifyTask -> NotifyTaskEntity.builder().teamId(notifyTask.getTeamId()).notifyUrl(notifyTask.getNotifyUrl()).notifyCount(notifyTask.getNotifyCount()).parameterJson(notifyTask.getParameterJson()).build()).collect(Collectors.toList());
+        return notifyTasks.stream().map(notifyTask -> NotifyTaskEntity.builder()
+                .teamId(notifyTask.getTeamId())
+                .notifyType(notifyTask.getNotifyType())
+                .notifyMQ(notifyTask.getNotifyMQ())
+                .notifyUrl(notifyTask.getNotifyUrl())
+                .notifyCount(notifyTask.getNotifyCount())
+                .parameterJson(notifyTask.getParameterJson())
+                .build()).collect(Collectors.toList());
     }
 
     @Override
@@ -245,5 +259,38 @@ public class TradeRepository implements ITradeRepository {
     @Override
     public int updateNotifyTaskStatusRetry(String teamId) {
         return notifyTaskDao.updateNotifyTaskStatusRetry(teamId);
+    }
+
+    @Override
+    public boolean occupyTeamStock(String teamStockKey, String recoveryTeamStockKey, Integer target, Integer validTime) {
+        // 失败恢复量
+        Long recoveryCount = redisService.getAtomicLong(recoveryTeamStockKey);
+        recoveryCount = null == recoveryCount ? 0 : recoveryCount;
+
+        // 1. incr 得到值，与总量和恢复量做对比。恢复量为系统失败时候记录的量。
+        // 2. 从有组队量开始，相当于已经有了一个占用量，所以要 +1
+        // 因为失败的时候也会导致 teamStockKey 增加，所有在比较占用量的时候需要将失败的次数加上
+        long occupy = redisService.incr(teamStockKey) + 1;
+        if (occupy > target + recoveryCount) {
+            redisService.setAtomicLong(teamStockKey, target);
+            return false;
+        }
+
+        // 1. 给每个产生的值加锁为兜底设计，虽然incr操作是原子的，基本不会产生一样的值。但在实际生产中，遇到过集群的运维配置问题，以及业务运营配置数据问题，导致incr得到的值相同。
+        // 2. validTime + 60分钟，是一个延后时间的设计，让数据保留时间稍微长一些，便于排查问题。
+        String lockKey = teamStockKey + Constants.UNDERLINE + occupy;
+        Boolean lock = redisService.setNx(lockKey, validTime + 60, TimeUnit.MINUTES);
+        if (!lock) {
+            log.info("组队库存加锁失败 {}", lockKey);
+        }
+
+        return lock;
+    }
+
+    @Override
+    public void recoveryTeamStock(String recoveryTeamStockKey, Integer validTime) {
+        // 首次组队拼团，是没有 teamId 的，所以不需要这个做处理。
+        if (StringUtils.isBlank(recoveryTeamStockKey)) return;
+        redisService.incr(recoveryTeamStockKey);
     }
 }

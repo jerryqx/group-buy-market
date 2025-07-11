@@ -14,4 +14,6 @@ public class TradeLockRuleCommandEntity {
     private String userId;
 
     private Long activityId;
+
+    private String teamId;
 }
