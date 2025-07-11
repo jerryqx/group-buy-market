@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class TradeLockRuleFilterBackEntity {
 
-    private Integer userTaskOrderCount;
+    private Integer userTakeOrderCount;
 }

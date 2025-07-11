@@ -44,11 +44,11 @@ public class TradeLockOrderService implements ITradeLockOrderService {
         TradeLockRuleFilterBackEntity tradeRuleFilterBackEntity = tradeRuleFilter.apply(
                 TradeLockRuleCommandEntity.builder().activityId(payActivityEntity.getActivityId())
                         .userId(userEntity.getUserId()).build(), new TradeLockRuleFilterFactory.DynamicContext());
-        Integer userTaskOrderCount = tradeRuleFilterBackEntity.getUserTaskOrderCount();
+        Integer userTakeOrderCount = tradeRuleFilterBackEntity.getUserTakeOrderCount();
         // 构建聚合对象
         GroupBuyOrderAggregate groupBuyOrderAggregate =
                 GroupBuyOrderAggregate.builder().userEntity(userEntity).payActivityEntity(payActivityEntity)
-                        .payDiscountEntity(payDiscountEntity).userTaskOrderCount(userTaskOrderCount).build();
+                        .payDiscountEntity(payDiscountEntity).userTakeOrderCount(userTakeOrderCount).build();
 
         // 锁定聚合订单 - 这会用户只是下单还没有支付。后续会有2个流程；支付成功、超时未支付（回退）
         return repository.lockMarketPayOrder(groupBuyOrderAggregate);

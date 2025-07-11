@@ -1,6 +1,7 @@
 package com.qx.domain.trade.model.entity;
 
 
+import com.qx.domain.trade.model.valobj.NotifyConfigVO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -50,5 +51,5 @@ public class PayDiscountEntity {
     /**
      * 回调地址
      */
-    private String notifyUrl;
+    private NotifyConfigVO notifyConfigVO;
 }

@@ -37,7 +37,7 @@ public class UserTaskLimitRuleFilter implements
         }
 
         return TradeLockRuleFilterBackEntity.builder()
-                .userTaskOrderCount(count)
+                .userTakeOrderCount(count)
                 .build();
     }
 }
