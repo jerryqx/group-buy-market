@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
  */
 @Slf4j
 @Repository
-public class ActivityRepository implements IActivityRepository {
+public class ActivityRepository extends AbstractRepository implements IActivityRepository {
 
     @Resource
     private IGroupBuyActivityDao groupBuyActivityDao;
@@ -52,13 +52,12 @@ public class ActivityRepository implements IActivityRepository {
     @Override
     public GroupBuyActivityDiscountVO queryGroupBuyActivityDiscountVO(Long activityId) {
         // 根据 SC 渠道值查询配置中最新的1个有效的活动信息
-        GroupBuyActivity groupBuyActivityRes = groupBuyActivityDao.queryValidGroupBuyActivityId(activityId);
+        String groupBuyActivityCacheKey = GroupBuyActivity.cacheRedisKey(activityId);
+        GroupBuyActivity groupBuyActivityRes = getFromCacheOrDb(groupBuyActivityCacheKey, () -> groupBuyActivityDao.queryValidGroupBuyActivityId(activityId));
 
         if (groupBuyActivityRes != null) {
             // 根据活动ID查询活动对应的优惠券信息
-            GroupBuyDiscount groupBuyDiscountRes =
-                    groupBuyDiscountDao.queryGroupBuyActivityDiscountByDiscountId(groupBuyActivityRes.getDiscountId());
-
+            GroupBuyDiscount groupBuyDiscountRes = getFromCacheOrDb(GroupBuyDiscount.cacheRedisKey(groupBuyActivityRes.getDiscountId()), () -> groupBuyDiscountDao.queryGroupBuyActivityDiscountByDiscountId(groupBuyActivityRes.getDiscountId()));
             GroupBuyActivityDiscountVO.GroupBuyDiscount groupBuyDiscount =
                     GroupBuyActivityDiscountVO.GroupBuyDiscount.builder()
                             .discountName(groupBuyDiscountRes.getDiscountName())

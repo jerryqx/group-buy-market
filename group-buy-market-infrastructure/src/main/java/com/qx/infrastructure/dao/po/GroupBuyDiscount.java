@@ -24,7 +24,7 @@ public class GroupBuyDiscount implements Serializable {
     /**
     * 折扣ID
     */
-    private Integer discountId;
+    private String discountId;
 
     /**
     * 折扣标题
@@ -66,4 +66,7 @@ public class GroupBuyDiscount implements Serializable {
     */
     private Date updateTime;
 
+    public static String cacheRedisKey(String discountId) {
+        return "group_buy_market_com.qx.infrastructure.dao.po.GroupBuyDiscount_" + discountId;
+    }
  }

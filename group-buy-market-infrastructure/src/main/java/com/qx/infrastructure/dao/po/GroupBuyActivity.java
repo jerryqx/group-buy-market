@@ -9,8 +9,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @description 拼团活动
  * @author BEJSON.com
+ * @description 拼团活动
  * @date 2025-03-25
  */
 @Data
@@ -34,7 +34,6 @@ public class GroupBuyActivity implements Serializable {
      * 活动名称
      */
     private String activityName;
-
 
 
     /**
@@ -101,4 +100,9 @@ public class GroupBuyActivity implements Serializable {
      * 更新时间
      */
     private Date updateTime;
- }
+
+
+    public static String cacheRedisKey(Long activityId) {
+        return "group_buy_market_com.qx.infrastructure.dao.po.GroupBuyActivity_" + activityId;
+    }
+}
