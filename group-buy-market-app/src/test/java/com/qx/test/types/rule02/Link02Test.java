@@ -1,9 +1,9 @@
 package com.qx.test.types.rule02;
 
+import cn.bugstack.wrench.design.framework.link.model2.chain.BusinessLinkedList;
 import com.alibaba.fastjson.JSON;
 import com.qx.test.types.rule02.factory.Rule02TradeRuleFactory;
 import com.qx.test.types.rule02.logic.XxxResponse;
-import com.qx.types.design.framework.link.model2.chain.BusinessLinkedList;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;

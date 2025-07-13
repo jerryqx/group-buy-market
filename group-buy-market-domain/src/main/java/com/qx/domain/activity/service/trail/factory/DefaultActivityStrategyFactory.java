@@ -1,11 +1,11 @@
 package com.qx.domain.activity.service.trail.factory;
 
+import cn.bugstack.wrench.design.framework.tree.StrategyHandler;
 import com.qx.domain.activity.model.entity.MarketProductEntity;
 import com.qx.domain.activity.model.entity.TrialBalanceEntity;
 import com.qx.domain.activity.model.valobj.GroupBuyActivityDiscountVO;
 import com.qx.domain.activity.model.valobj.SkuVO;
 import com.qx.domain.activity.service.trail.node.RootNode;
-import com.qx.types.design.framework.tree.StrategyHandler;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

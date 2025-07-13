@@ -1,12 +1,12 @@
 package com.qx.domain.activity.service;
 
+import cn.bugstack.wrench.design.framework.tree.StrategyHandler;
 import com.qx.domain.activity.adapter.repository.IActivityRepository;
 import com.qx.domain.activity.model.entity.MarketProductEntity;
 import com.qx.domain.activity.model.entity.TrialBalanceEntity;
 import com.qx.domain.activity.model.entity.UserGroupBuyOrderDetailEntity;
 import com.qx.domain.activity.model.valobj.TeamStatisticVO;
 import com.qx.domain.activity.service.trail.factory.DefaultActivityStrategyFactory;
-import com.qx.types.design.framework.tree.StrategyHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;

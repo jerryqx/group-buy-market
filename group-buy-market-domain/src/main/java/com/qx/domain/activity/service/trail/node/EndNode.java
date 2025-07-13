@@ -1,5 +1,6 @@
 package com.qx.domain.activity.service.trail.node;
 
+import cn.bugstack.wrench.design.framework.tree.StrategyHandler;
 import com.alibaba.fastjson.JSON;
 import com.qx.domain.activity.model.entity.MarketProductEntity;
 import com.qx.domain.activity.model.entity.TrialBalanceEntity;
@@ -7,7 +8,6 @@ import com.qx.domain.activity.model.valobj.GroupBuyActivityDiscountVO;
 import com.qx.domain.activity.model.valobj.SkuVO;
 import com.qx.domain.activity.service.trail.AbstractGroupBuyMarketSupport;
 import com.qx.domain.activity.service.trail.factory.DefaultActivityStrategyFactory;
-import com.qx.types.design.framework.tree.StrategyHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

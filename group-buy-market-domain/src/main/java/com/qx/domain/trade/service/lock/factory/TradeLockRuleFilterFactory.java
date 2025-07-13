@@ -1,13 +1,13 @@
 package com.qx.domain.trade.service.lock.factory;
 
+import cn.bugstack.wrench.design.framework.link.model2.LinkArmory;
+import cn.bugstack.wrench.design.framework.link.model2.chain.BusinessLinkedList;
 import com.qx.domain.trade.model.entity.GroupBuyActivityEntity;
 import com.qx.domain.trade.model.entity.TradeLockRuleCommandEntity;
 import com.qx.domain.trade.model.entity.TradeLockRuleFilterBackEntity;
 import com.qx.domain.trade.service.lock.filter.ActivityUsabilityRuleFilter;
 import com.qx.domain.trade.service.lock.filter.TeamStockOccupyRuleFilter;
 import com.qx.domain.trade.service.lock.filter.UserTaskLimitRuleFilter;
-import com.qx.types.design.framework.link.model2.LinkArmory;
-import com.qx.types.design.framework.link.model2.chain.BusinessLinkedList;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,12 +22,12 @@ import org.springframework.stereotype.Service;
 public class TradeLockRuleFilterFactory {
 
     @Bean("tradeRuleFilter")
-    public BusinessLinkedList<TradeLockRuleCommandEntity, TradeLockRuleFilterFactory.DynamicContext,
+    public BusinessLinkedList<TradeLockRuleCommandEntity, DynamicContext,
             TradeLockRuleFilterBackEntity> tradeRuleFilter(ActivityUsabilityRuleFilter activityUsabilityRuleFilter,
                                                            UserTaskLimitRuleFilter userTaskLimitRuleFilter,
                                                            TeamStockOccupyRuleFilter teamStockOccupyRuleFilter) {
 
-        LinkArmory<TradeLockRuleCommandEntity, TradeLockRuleFilterFactory.DynamicContext, TradeLockRuleFilterBackEntity> linkArmory
+        LinkArmory<TradeLockRuleCommandEntity, DynamicContext, TradeLockRuleFilterBackEntity> linkArmory
                 = new LinkArmory<>("交易规则过滤链", activityUsabilityRuleFilter, userTaskLimitRuleFilter, teamStockOccupyRuleFilter);
         return linkArmory.getLogicLink();
     }

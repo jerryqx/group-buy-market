@@ -1,11 +1,11 @@
 package com.qx.domain.trade.service.lock.filter;
 
+import cn.bugstack.wrench.design.framework.link.model2.handler.ILogicHandler;
 import com.qx.domain.trade.adapter.repository.ITradeRepository;
 import com.qx.domain.trade.model.entity.GroupBuyActivityEntity;
 import com.qx.domain.trade.model.entity.TradeLockRuleCommandEntity;
 import com.qx.domain.trade.model.entity.TradeLockRuleFilterBackEntity;
 import com.qx.domain.trade.service.lock.factory.TradeLockRuleFilterFactory;
-import com.qx.types.design.framework.link.model2.handler.ILogicHandler;
 import com.qx.types.enums.ResponseCode;
 import com.qx.types.exception.AppException;
 import lombok.extern.slf4j.Slf4j;

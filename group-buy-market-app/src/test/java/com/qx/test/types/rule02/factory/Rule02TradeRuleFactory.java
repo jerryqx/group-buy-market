@@ -1,10 +1,10 @@
 package com.qx.test.types.rule02.factory;
 
+import cn.bugstack.wrench.design.framework.link.model2.LinkArmory;
+import cn.bugstack.wrench.design.framework.link.model2.chain.BusinessLinkedList;
 import com.qx.test.types.rule02.logic.RuleLogic201;
 import com.qx.test.types.rule02.logic.RuleLogic202;
 import com.qx.test.types.rule02.logic.XxxResponse;
-import com.qx.types.design.framework.link.model2.LinkArmory;
-import com.qx.types.design.framework.link.model2.chain.BusinessLinkedList;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

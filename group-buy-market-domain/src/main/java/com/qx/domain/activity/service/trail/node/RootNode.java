@@ -1,11 +1,11 @@
 package com.qx.domain.activity.service.trail.node;
 
+import cn.bugstack.wrench.design.framework.tree.StrategyHandler;
 import com.alibaba.fastjson2.JSON;
 import com.qx.domain.activity.model.entity.MarketProductEntity;
 import com.qx.domain.activity.model.entity.TrialBalanceEntity;
 import com.qx.domain.activity.service.trail.AbstractGroupBuyMarketSupport;
 import com.qx.domain.activity.service.trail.factory.DefaultActivityStrategyFactory;
-import com.qx.types.design.framework.tree.StrategyHandler;
 import com.qx.types.enums.ResponseCode;
 import com.qx.types.exception.AppException;
 import lombok.extern.slf4j.Slf4j;

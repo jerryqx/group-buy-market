@@ -1,8 +1,8 @@
 package com.qx.test.types.rule01.factory;
 
+import cn.bugstack.wrench.design.framework.link.model1.ILogicLink;
 import com.qx.test.types.rule01.logic.RuleLogic101;
 import com.qx.test.types.rule01.logic.RuleLogic102;
-import com.qx.types.design.framework.link.model1.ILogicLink;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

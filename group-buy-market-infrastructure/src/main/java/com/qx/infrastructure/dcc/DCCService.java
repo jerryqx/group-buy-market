@@ -1,6 +1,6 @@
 package com.qx.infrastructure.dcc;
 
-import com.qx.types.annotations.DCCValue;
+import cn.bugstack.wrench.dynamic.config.center.types.annotations.DCCValue;
 import com.qx.types.common.Constants;
 import org.springframework.stereotype.Service;
 

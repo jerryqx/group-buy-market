@@ -1,5 +1,7 @@
 package com.qx.domain.trade.service.settlement.factory;
 
+import cn.bugstack.wrench.design.framework.link.model2.LinkArmory;
+import cn.bugstack.wrench.design.framework.link.model2.chain.BusinessLinkedList;
 import com.qx.domain.trade.model.entity.GroupBuyTeamEntity;
 import com.qx.domain.trade.model.entity.MarketPayOrderEntity;
 import com.qx.domain.trade.model.entity.TradeSettlementRuleCommandEntity;
@@ -8,8 +10,6 @@ import com.qx.domain.trade.service.settlement.filter.EndRuleFilter;
 import com.qx.domain.trade.service.settlement.filter.OutTradeNoRuleFilter;
 import com.qx.domain.trade.service.settlement.filter.SCRuleFilter;
 import com.qx.domain.trade.service.settlement.filter.SettableRuleFilter;
-import com.qx.types.design.framework.link.model2.LinkArmory;
-import com.qx.types.design.framework.link.model2.chain.BusinessLinkedList;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,9 +24,9 @@ public class TradeSettlementRuleFilterFactory {
 
 
     @Bean("tradeSettlementRuleFilter")
-    public BusinessLinkedList<TradeSettlementRuleCommandEntity, TradeSettlementRuleFilterFactory.DynamicContext, TradeSettlementRuleFilterBackEntity> tradeSettlementRuleFilter(SettableRuleFilter settableRuleFilter, OutTradeNoRuleFilter outTradeNoRuleFilter, SCRuleFilter scRuleFilter, EndRuleFilter endRuleFilter) {
+    public BusinessLinkedList<TradeSettlementRuleCommandEntity, DynamicContext, TradeSettlementRuleFilterBackEntity> tradeSettlementRuleFilter(SettableRuleFilter settableRuleFilter, OutTradeNoRuleFilter outTradeNoRuleFilter, SCRuleFilter scRuleFilter, EndRuleFilter endRuleFilter) {
         // 组装链
-        LinkArmory<TradeSettlementRuleCommandEntity, TradeSettlementRuleFilterFactory.DynamicContext, TradeSettlementRuleFilterBackEntity> linkArmory
+        LinkArmory<TradeSettlementRuleCommandEntity, DynamicContext, TradeSettlementRuleFilterBackEntity> linkArmory
                 = new LinkArmory<>("交易结算规则过滤链", outTradeNoRuleFilter, scRuleFilter, settableRuleFilter, endRuleFilter);
         return linkArmory.getLogicLink();
 

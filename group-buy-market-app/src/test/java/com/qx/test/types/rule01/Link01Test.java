@@ -1,8 +1,8 @@
 package com.qx.test.types.rule01;
 
+import cn.bugstack.wrench.design.framework.link.model1.ILogicLink;
 import com.alibaba.fastjson.JSON;
 import com.qx.test.types.rule01.factory.Rule01TradeRuleFactory;
-import com.qx.types.design.framework.link.model1.ILogicLink;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;

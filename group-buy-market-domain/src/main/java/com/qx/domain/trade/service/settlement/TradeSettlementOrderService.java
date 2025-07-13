@@ -1,5 +1,6 @@
 package com.qx.domain.trade.service.settlement;
 
+import cn.bugstack.wrench.design.framework.link.model2.chain.BusinessLinkedList;
 import com.alibaba.fastjson.JSON;
 import com.qx.domain.trade.adapter.port.ITradePort;
 import com.qx.domain.trade.adapter.repository.ITradeRepository;
@@ -7,7 +8,6 @@ import com.qx.domain.trade.model.aggregate.GroupBuyTeamSettlementAggregate;
 import com.qx.domain.trade.model.entity.*;
 import com.qx.domain.trade.service.ITradeSettlementOrderService;
 import com.qx.domain.trade.service.settlement.factory.TradeSettlementRuleFilterFactory;
-import com.qx.types.design.framework.link.model2.chain.BusinessLinkedList;
 import com.qx.types.enums.NotifyTaskHTTPEnumVO;
 import com.qx.types.exception.AppException;
 import lombok.extern.slf4j.Slf4j;

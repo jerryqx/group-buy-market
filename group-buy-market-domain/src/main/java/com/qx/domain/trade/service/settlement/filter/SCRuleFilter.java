@@ -1,10 +1,10 @@
 package com.qx.domain.trade.service.settlement.filter;
 
+import cn.bugstack.wrench.design.framework.link.model2.handler.ILogicHandler;
 import com.qx.domain.trade.adapter.repository.ITradeRepository;
 import com.qx.domain.trade.model.entity.TradeSettlementRuleCommandEntity;
 import com.qx.domain.trade.model.entity.TradeSettlementRuleFilterBackEntity;
 import com.qx.domain.trade.service.settlement.factory.TradeSettlementRuleFilterFactory;
-import com.qx.types.design.framework.link.model2.handler.ILogicHandler;
 import com.qx.types.enums.ResponseCode;
 import com.qx.types.exception.AppException;
 import lombok.extern.slf4j.Slf4j;
