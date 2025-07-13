@@ -35,6 +35,17 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
+        <!-- xfg wrench dcc 动态配置中心 -->
+        <dependency>
+            <groupId>cn.bugstack.wrench</groupId>
+            <artifactId>xfg-wrench-starter-dynamic-config-center</artifactId>
+        </dependency>
+
+        <!-- xfg wrench dcc 动态配置中心 -->
+        <dependency>
+            <groupId>cn.bugstack.wrench</groupId>
+            <artifactId>xfg-wrench-starter-rate-limiter</artifactId>
+        </dependency>
 
         <!-- 系统模块 -->
         <dependency>
