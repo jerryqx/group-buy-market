@@ -148,6 +148,13 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <!-- 上报日志 ELK -->
+            <dependency>
+                <groupId>net.logstash.logback</groupId>
+                <artifactId>logstash-logback-encoder</artifactId>
+                <version>7.3</version>
+            </dependency>
             <!-- 工程模块 -->
             <dependency>
                 <groupId>com.qx</groupId>

@@ -86,3 +86,7 @@ logging:
   level:
     root: DEBUG
   config: classpath:logback-spring.xml
+
+# 日志；logstash部署的服务器IP
+logstash:
+  host: 117.72.48.228
