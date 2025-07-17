@@ -26,7 +26,7 @@ public class TradeLockOrderService implements ITradeLockOrderService {
     @Override
     public MarketPayOrderEntity queryNoPayMarketPayOrderByOutTradeNo(String userId, String outTradeNo) {
         log.info("拼团交易-查询未支付营销订单:{} outTradeNo:{}", userId, outTradeNo);
-        return repository.queryNoPayMarketPayOrderByOutTradeNo(userId, outTradeNo);
+        return repository.queryGroupBuyOrderRecordByOutTradeNo(userId, outTradeNo);
 
     }
 

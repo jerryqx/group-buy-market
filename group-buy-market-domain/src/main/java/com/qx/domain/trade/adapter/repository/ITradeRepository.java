@@ -1,6 +1,7 @@
 package com.qx.domain.trade.adapter.repository;
 
 import com.qx.domain.trade.model.aggregate.GroupBuyOrderAggregate;
+import com.qx.domain.trade.model.aggregate.GroupBuyRefundAggregate;
 import com.qx.domain.trade.model.aggregate.GroupBuyTeamSettlementAggregate;
 import com.qx.domain.trade.model.entity.GroupBuyActivityEntity;
 import com.qx.domain.trade.model.entity.GroupBuyTeamEntity;
@@ -12,7 +13,7 @@ import java.util.List;
 
 public interface ITradeRepository {
 
-    MarketPayOrderEntity queryNoPayMarketPayOrderByOutTradeNo(String userId, String outTradeNo);
+    MarketPayOrderEntity queryGroupBuyOrderRecordByOutTradeNo(String userId, String outTradeNo);
 
     MarketPayOrderEntity lockMarketPayOrder(GroupBuyOrderAggregate groupBuyOrderAggregate);
 
@@ -42,4 +43,6 @@ public interface ITradeRepository {
     boolean occupyTeamStock(String teamStockKey, String recoveryTeamStockKey, Integer target, Integer validTime);
 
     void recoveryTeamStock(String recoveryTeamStockKey, Integer validTime);
+
+    void unpaid2Refund(GroupBuyRefundAggregate groupBuyRefundAggregate);
 }

@@ -10,7 +10,7 @@ public interface IGroupBuyOrderListDao {
 
     void insert(GroupBuyOrderList groupBuyOrderListReq);
 
-    GroupBuyOrderList queryNoPayMarketPayOrderByOutTradeNo(GroupBuyOrderList groupBuyOrderListReq);
+    GroupBuyOrderList queryGroupBuyOrderRecordByOutTradeNo(GroupBuyOrderList groupBuyOrderListReq);
 
     Integer queryOrderCountByActivityId(GroupBuyOrderList groupBuyOrderListReq);
 
@@ -23,4 +23,6 @@ public interface IGroupBuyOrderListDao {
     List<GroupBuyOrderList> queryInProgressUserGroupBuyOrderDetailListByRandom(GroupBuyOrderList groupBuyOrderListReq);
 
     List<GroupBuyOrderList> queryInProgressUserGroupBuyOrderDetailListByActivityId(Long activityId);
+
+    int unpaid2Refund(GroupBuyOrderList groupBuyOrderListReq);
 }
