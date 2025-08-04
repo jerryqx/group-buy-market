@@ -1,7 +1,7 @@
 package com.qx.trigger.job;
 
 import com.alibaba.fastjson.JSON;
-import com.qx.domain.trade.service.ITradeSettlementOrderService;
+import com.qx.domain.trade.service.ITradeTaskService;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
@@ -16,8 +16,11 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class GroupBuyNotifyJob {
 
+
     @Resource
-    private ITradeSettlementOrderService tradeSettlementOrderService;
+    private ITradeTaskService tradeTaskService;
+
+
     @Resource
     private RedissonClient redissonClient;
 
@@ -28,7 +31,7 @@ public class GroupBuyNotifyJob {
         try {
             boolean isLocked = lock.tryLock(3, 0, TimeUnit.SECONDS);
             if (!isLocked) return;
-            Map<String, Integer> result = tradeSettlementOrderService.execSettlementNotifyJob();
+            Map<String, Integer> result = tradeTaskService.execNotifyJob();
             log.info("定时任务，回调通知拼团完结任务 result:{}", JSON.toJSONString(result));
         } catch (Exception e) {
             log.error("定时任务，回调通知拼团完结任务失败", e);
