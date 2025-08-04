@@ -1,6 +1,5 @@
 package com.qx.domain.activity.model.entity;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,7 +12,6 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserGroupBuyOrderDetailEntity {
-
 
     /**
      * 用户ID

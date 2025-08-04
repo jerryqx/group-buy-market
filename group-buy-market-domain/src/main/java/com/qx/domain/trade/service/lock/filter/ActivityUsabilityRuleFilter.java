@@ -18,14 +18,15 @@ import java.util.Date;
 @Slf4j
 @Service
 public class ActivityUsabilityRuleFilter implements
-        ILogicHandler<TradeLockRuleCommandEntity, TradeLockRuleFilterFactory.DynamicContext, TradeLockRuleFilterBackEntity> {
+                                         ILogicHandler<TradeLockRuleCommandEntity, TradeLockRuleFilterFactory.DynamicContext, TradeLockRuleFilterBackEntity> {
 
     @Resource
     private ITradeRepository repository;
 
     @Override
     public TradeLockRuleFilterBackEntity apply(TradeLockRuleCommandEntity requestParameter,
-                                               TradeLockRuleFilterFactory.DynamicContext dynamicContext) throws Exception {
+                                               TradeLockRuleFilterFactory.DynamicContext dynamicContext)
+            throws Exception {
         log.info("交易规则过滤-活动的可用性校验{} activityId:{}", requestParameter.getUserId(),
                 requestParameter.getActivityId());
 

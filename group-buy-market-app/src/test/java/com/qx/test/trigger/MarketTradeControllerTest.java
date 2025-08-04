@@ -39,11 +39,12 @@ public class MarketTradeControllerTest {
         lockMarketPayOrderRequestDTO.setNotifyMQ();
         lockMarketPayOrderRequestDTO.setOutTradeNo(RandomStringUtils.randomNumeric(12));
 
-        Response<LockMarketPayOrderResponseDTO> lockMarketPayOrderResponseDTOResponse = marketTradeService.lockMarketPayOrder(lockMarketPayOrderRequestDTO);
+        Response<LockMarketPayOrderResponseDTO> lockMarketPayOrderResponseDTOResponse =
+                marketTradeService.lockMarketPayOrder(lockMarketPayOrderRequestDTO);
 
-        log.info("测试结果 req:{} res:{}", JSON.toJSONString(lockMarketPayOrderRequestDTO), JSON.toJSONString(lockMarketPayOrderResponseDTOResponse));
+        log.info("测试结果 req:{} res:{}", JSON.toJSONString(lockMarketPayOrderRequestDTO),
+                JSON.toJSONString(lockMarketPayOrderResponseDTOResponse));
     }
-
 
     @Test
     public void test_lockMarketPayOrder() {
@@ -56,9 +57,11 @@ public class MarketTradeControllerTest {
         lockMarketPayOrderRequestDTO.setChannel("c01");
         lockMarketPayOrderRequestDTO.setOutTradeNo(RandomStringUtils.randomNumeric(12));
         lockMarketPayOrderRequestDTO.setNotifyUrl("http://127.0.0.1:8091/api/v1/test/group_buy_notify");
-        Response<LockMarketPayOrderResponseDTO> lockMarketPayOrderResponseDTOResponse = marketTradeService.lockMarketPayOrder(lockMarketPayOrderRequestDTO);
+        Response<LockMarketPayOrderResponseDTO> lockMarketPayOrderResponseDTOResponse =
+                marketTradeService.lockMarketPayOrder(lockMarketPayOrderRequestDTO);
 
-        log.info("测试结果 req:{} res:{}", JSON.toJSONString(lockMarketPayOrderRequestDTO), JSON.toJSONString(lockMarketPayOrderResponseDTOResponse));
+        log.info("测试结果 req:{} res:{}", JSON.toJSONString(lockMarketPayOrderRequestDTO),
+                JSON.toJSONString(lockMarketPayOrderResponseDTOResponse));
     }
 
     @Test
@@ -73,9 +76,11 @@ public class MarketTradeControllerTest {
         lockMarketPayOrderRequestDTO.setOutTradeNo(RandomStringUtils.randomNumeric(12));
         lockMarketPayOrderRequestDTO.setNotifyUrl("http://127.0.0.1:8091/api/v1/test/group_buy_notify");
 
-        Response<LockMarketPayOrderResponseDTO> lockMarketPayOrderResponseDTOResponse = marketTradeService.lockMarketPayOrder(lockMarketPayOrderRequestDTO);
+        Response<LockMarketPayOrderResponseDTO> lockMarketPayOrderResponseDTOResponse =
+                marketTradeService.lockMarketPayOrder(lockMarketPayOrderRequestDTO);
 
-        log.info("测试结果 req:{} res:{}", JSON.toJSONString(lockMarketPayOrderRequestDTO), JSON.toJSONString(lockMarketPayOrderResponseDTOResponse));
+        log.info("测试结果 req:{} res:{}", JSON.toJSONString(lockMarketPayOrderRequestDTO),
+                JSON.toJSONString(lockMarketPayOrderResponseDTOResponse));
     }
 
 }

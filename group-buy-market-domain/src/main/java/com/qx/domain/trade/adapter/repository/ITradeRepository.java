@@ -29,7 +29,6 @@ public interface ITradeRepository {
 
     boolean isSCBlackIntercept(String source, String channel);
 
-
     List<NotifyTaskEntity> queryUnExecutedNotifyTaskList();
 
     List<NotifyTaskEntity> queryUnExecutedNotifyTaskList(String teamId);
@@ -44,7 +43,9 @@ public interface ITradeRepository {
 
     void recoveryTeamStock(String recoveryTeamStockKey, Integer validTime);
 
-    void unpaid2Refund(GroupBuyRefundAggregate groupBuyRefundAggregate);
+    NotifyTaskEntity unpaid2Refund(GroupBuyRefundAggregate groupBuyRefundAggregate);
 
     NotifyTaskEntity paid2Refund(GroupBuyRefundAggregate groupBuyRefundAggregate);
+
+    NotifyTaskEntity paidTeam2Refund(GroupBuyRefundAggregate groupBuyRefundAggregate);
 }

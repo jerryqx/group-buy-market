@@ -10,8 +10,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * @description 商品信息
  * @author BEJSON.com
+ * @description 商品信息
  * @date 2025-03-26
  */
 @Data
@@ -22,45 +22,44 @@ public class Sku implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-
     /**
-    * 自增ID
-    */
+     * 自增ID
+     */
     private Integer id;
 
     /**
-    * 渠道
-    */
+     * 渠道
+     */
     private String source;
 
     /**
-    * 来源
-    */
+     * 来源
+     */
     private String channel;
 
     /**
-    * 商品ID
-    */
+     * 商品ID
+     */
     private String goodsId;
 
     /**
-    * 商品名称
-    */
+     * 商品名称
+     */
     private String goodsName;
 
     /**
-    * 商品价格
-    */
+     * 商品价格
+     */
     private BigDecimal originalPrice;
 
     /**
-    * 创建时间
-    */
+     * 创建时间
+     */
     private Date createTime;
 
     /**
-    * 更新时间
-    */
+     * 更新时间
+     */
     private Date updateTime;
 
- }
+}

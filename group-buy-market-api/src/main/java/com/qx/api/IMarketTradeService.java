@@ -11,8 +11,10 @@ import com.qx.api.response.Response;
  */
 public interface IMarketTradeService {
 
-    Response<LockMarketPayOrderResponseDTO> lockMarketPayOrder(LockMarketPayOrderRequestDTO lockMarketPayOrderRequestDTO);
+    Response<LockMarketPayOrderResponseDTO> lockMarketPayOrder(
+            LockMarketPayOrderRequestDTO lockMarketPayOrderRequestDTO);
 
-    Response<SettlementMarketPayOrderResponseDTO> settlementMarketPayOrder(SettlementMarketPayOrderRequestDTO requestDTO);
+    Response<SettlementMarketPayOrderResponseDTO> settlementMarketPayOrder(
+            SettlementMarketPayOrderRequestDTO requestDTO);
 
 }

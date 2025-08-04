@@ -16,7 +16,6 @@ import javax.annotation.Resource;
 @SpringBootTest
 public class ITagServiceTest {
 
-
     @Resource
     private TagService tagService;
     @Resource

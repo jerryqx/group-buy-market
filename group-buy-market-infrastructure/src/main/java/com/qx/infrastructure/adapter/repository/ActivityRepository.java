@@ -53,11 +53,15 @@ public class ActivityRepository extends AbstractRepository implements IActivityR
     public GroupBuyActivityDiscountVO queryGroupBuyActivityDiscountVO(Long activityId) {
         // 根据 SC 渠道值查询配置中最新的1个有效的活动信息
         String groupBuyActivityCacheKey = GroupBuyActivity.cacheRedisKey(activityId);
-        GroupBuyActivity groupBuyActivityRes = getFromCacheOrDb(groupBuyActivityCacheKey, () -> groupBuyActivityDao.queryValidGroupBuyActivityId(activityId));
+        GroupBuyActivity groupBuyActivityRes = getFromCacheOrDb(groupBuyActivityCacheKey,
+                () -> groupBuyActivityDao.queryValidGroupBuyActivityId(activityId));
 
         if (groupBuyActivityRes != null) {
             // 根据活动ID查询活动对应的优惠券信息
-            GroupBuyDiscount groupBuyDiscountRes = getFromCacheOrDb(GroupBuyDiscount.cacheRedisKey(groupBuyActivityRes.getDiscountId()), () -> groupBuyDiscountDao.queryGroupBuyActivityDiscountByDiscountId(groupBuyActivityRes.getDiscountId()));
+            GroupBuyDiscount groupBuyDiscountRes =
+                    getFromCacheOrDb(GroupBuyDiscount.cacheRedisKey(groupBuyActivityRes.getDiscountId()),
+                            () -> groupBuyDiscountDao.queryGroupBuyActivityDiscountByDiscountId(
+                                    groupBuyActivityRes.getDiscountId()));
             GroupBuyActivityDiscountVO.GroupBuyDiscount groupBuyDiscount =
                     GroupBuyActivityDiscountVO.GroupBuyDiscount.builder()
                             .discountName(groupBuyDiscountRes.getDiscountName())
@@ -135,15 +139,17 @@ public class ActivityRepository extends AbstractRepository implements IActivityR
         return dccService.isCutRange(userId);
     }
 
-
     @Override
-    public List<UserGroupBuyOrderDetailEntity> queryInProgressUserGroupBuyOrderDetailListByOwner(Long activityId, String userId, Integer ownerCount) {
+    public List<UserGroupBuyOrderDetailEntity> queryInProgressUserGroupBuyOrderDetailListByOwner(Long activityId,
+                                                                                                 String userId,
+                                                                                                 Integer ownerCount) {
         // 1. 根据用户ID、活动ID，查询用户参与的拼团队伍
         GroupBuyOrderList groupBuyOrderListReq = new GroupBuyOrderList();
         groupBuyOrderListReq.setUserId(userId);
         groupBuyOrderListReq.setActivityId(activityId);
         groupBuyOrderListReq.setCount(ownerCount);
-        List<GroupBuyOrderList> groupBuyOrderLists = groupBuyOrderListDao.queryInProgressUserGroupBuyOrderDetailListByUserId(groupBuyOrderListReq);
+        List<GroupBuyOrderList> groupBuyOrderLists =
+                groupBuyOrderListDao.queryInProgressUserGroupBuyOrderDetailListByUserId(groupBuyOrderListReq);
         if (null == groupBuyOrderLists || groupBuyOrderLists.isEmpty()) return null;
 
         // 2. 过滤队伍获取 TeamId,判断 teamId 是否为 null
@@ -181,14 +187,17 @@ public class ActivityRepository extends AbstractRepository implements IActivityR
     }
 
     @Override
-    public List<UserGroupBuyOrderDetailEntity> queryInProgressUserGroupBuyOrderDetailListByRandom(Long activityId, String userId, Integer randomCount) {
+    public List<UserGroupBuyOrderDetailEntity> queryInProgressUserGroupBuyOrderDetailListByRandom(Long activityId,
+                                                                                                  String userId,
+                                                                                                  Integer randomCount) {
         // 1. 根据用户ID、活动ID，查询用户参与的拼团队伍
         GroupBuyOrderList groupBuyOrderListReq = new GroupBuyOrderList();
         groupBuyOrderListReq.setUserId(userId);
         groupBuyOrderListReq.setActivityId(activityId);
         // 查询2倍的量，之后其中 randomCount 数量
         groupBuyOrderListReq.setCount(randomCount * 2);
-        List<GroupBuyOrderList> groupBuyOrderLists = groupBuyOrderListDao.queryInProgressUserGroupBuyOrderDetailListByRandom(groupBuyOrderListReq);
+        List<GroupBuyOrderList> groupBuyOrderLists =
+                groupBuyOrderListDao.queryInProgressUserGroupBuyOrderDetailListByRandom(groupBuyOrderListReq);
         if (null == groupBuyOrderLists || groupBuyOrderLists.isEmpty()) return null;
         // 判断总量是否大于 randomCount
         if (groupBuyOrderLists.size() > randomCount) {
@@ -235,7 +244,8 @@ public class ActivityRepository extends AbstractRepository implements IActivityR
     @Override
     public TeamStatisticVO queryTeamStatisticByActivityId(Long activityId) {
 
-        List<GroupBuyOrderList> groupBuyOrderLists = groupBuyOrderListDao.queryInProgressUserGroupBuyOrderDetailListByActivityId(activityId);
+        List<GroupBuyOrderList> groupBuyOrderLists =
+                groupBuyOrderListDao.queryInProgressUserGroupBuyOrderDetailListByActivityId(activityId);
 
         if (null == groupBuyOrderLists || groupBuyOrderLists.isEmpty()) {
             return new TeamStatisticVO(0, 0, 0);
@@ -248,7 +258,6 @@ public class ActivityRepository extends AbstractRepository implements IActivityR
         Integer allTeamCount = groupBuyOrderDao.queryAllTeamCount(teamIds);
         Integer allTeamCompleteCount = groupBuyOrderDao.queryAllTeamCompleteCount(teamIds);
         Integer allTeamUserCount = groupBuyOrderDao.queryAllUserCount(teamIds);
-
 
 // 4. 构建对象
         return TeamStatisticVO.builder()

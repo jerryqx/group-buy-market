@@ -14,17 +14,18 @@ import java.util.concurrent.TimeoutException;
  * @author 秦啸
  */
 @SuppressWarnings("checkstyle:LineLength")
-public abstract class AbstractGroupBuyMarketSupport<MarketProductEntity, DynamicContext, TrialBalanceEntity> extends AbstractMultiThreadStrategyRouter<MarketProductEntity, DefaultActivityStrategyFactory.DynamicContext, TrialBalanceEntity> {
+public abstract class AbstractGroupBuyMarketSupport<MarketProductEntity, DynamicContext, TrialBalanceEntity> extends
+                                                                                                             AbstractMultiThreadStrategyRouter<MarketProductEntity, DefaultActivityStrategyFactory.DynamicContext, TrialBalanceEntity> {
 
     protected long timeout = 5000;
 
     @Resource
     protected IActivityRepository repository;
 
-
-
     @Override
-    protected void multiThread(MarketProductEntity requestParameter, DefaultActivityStrategyFactory.DynamicContext dynamicContext) throws ExecutionException, InterruptedException, TimeoutException {
+    protected void multiThread(MarketProductEntity requestParameter,
+                               DefaultActivityStrategyFactory.DynamicContext dynamicContext)
+            throws ExecutionException, InterruptedException, TimeoutException {
 
     }
 }

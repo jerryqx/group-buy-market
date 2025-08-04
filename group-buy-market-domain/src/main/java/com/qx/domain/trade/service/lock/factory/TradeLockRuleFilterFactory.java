@@ -28,7 +28,8 @@ public class TradeLockRuleFilterFactory {
                                                            TeamStockOccupyRuleFilter teamStockOccupyRuleFilter) {
 
         LinkArmory<TradeLockRuleCommandEntity, DynamicContext, TradeLockRuleFilterBackEntity> linkArmory
-                = new LinkArmory<>("交易规则过滤链", activityUsabilityRuleFilter, userTaskLimitRuleFilter, teamStockOccupyRuleFilter);
+                = new LinkArmory<>("交易规则过滤链", activityUsabilityRuleFilter, userTaskLimitRuleFilter,
+                teamStockOccupyRuleFilter);
         return linkArmory.getLogicLink();
     }
 

@@ -25,7 +25,6 @@ public class GoodsMarketResponseDTO {
     // 组队统计
     private TeamStatistic teamStatistic;
 
-
     @Data
     @Builder
     @AllArgsConstructor
@@ -69,7 +68,6 @@ public class GoodsMarketResponseDTO {
          */
         private String outTradeNo;
 
-
         public static String differenceDateTime2Str(Date validStartTime, Date validEndTime) {
             if (validStartTime == null || validEndTime == null) {
                 return "无效的时间";
@@ -87,7 +85,6 @@ public class GoodsMarketResponseDTO {
             return String.format("%02d:%02d:%02d", hours, minutes, seconds);
         }
     }
-
 
     /**
      * 组队统计

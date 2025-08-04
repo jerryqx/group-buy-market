@@ -26,7 +26,6 @@ public class LockMarketPayOrderRequestDTO {
     // 外部交易单号
     private String outTradeNo;
 
-
     private NotifyConfigVO notifyConfigVO;
 
     // 兼容配置
@@ -43,7 +42,6 @@ public class LockMarketPayOrderRequestDTO {
         notifyConfigVO.setNotifyType("MQ");
         this.notifyConfigVO = notifyConfigVO;
     }
-
 
     // 回调配置
     @Data

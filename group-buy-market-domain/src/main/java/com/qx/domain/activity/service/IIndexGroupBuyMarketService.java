@@ -19,14 +19,15 @@ public interface IIndexGroupBuyMarketService {
     /**
      * 查询进行中的拼团订单
      *
-     * @param activityId  活动ID
-     * @param userId      用户ID
-     * @param ownerCount  个人数量
+     * @param activityId 活动ID
+     * @param userId 用户ID
+     * @param ownerCount 个人数量
      * @param randomCount 随机数量
      * @return 用户拼团明细数据
      */
-    List<UserGroupBuyOrderDetailEntity> queryInProgressUserGroupBuyOrderDetailList(Long activityId, String userId, Integer ownerCount, Integer randomCount);
-
+    List<UserGroupBuyOrderDetailEntity> queryInProgressUserGroupBuyOrderDetailList(Long activityId, String userId,
+                                                                                   Integer ownerCount,
+                                                                                   Integer randomCount);
 
     /**
      * 活动拼团队伍总结

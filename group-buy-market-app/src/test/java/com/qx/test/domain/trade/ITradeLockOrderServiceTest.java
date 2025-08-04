@@ -1,6 +1,5 @@
 package com.qx.test.domain.trade;
 
-
 import com.alibaba.fastjson.JSON;
 import com.qx.domain.activity.model.entity.MarketProductEntity;
 import com.qx.domain.activity.model.entity.TrialBalanceEntity;
@@ -46,18 +45,20 @@ public class ITradeLockOrderServiceTest {
         String outTradeNo = "909000098112";
 
         // 1. 获取试算优惠，有【activityId】优先使用
-        TrialBalanceEntity trialBalanceEntity = indexGroupBuyMarketService.indexMarketTrial(MarketProductEntity.builder()
-                .userId(userId)
-                .source(source)
-                .channel(channel)
-                .goodsId(goodsId)
-                .activityId(activityId)
-                .build());
+        TrialBalanceEntity trialBalanceEntity =
+                indexGroupBuyMarketService.indexMarketTrial(MarketProductEntity.builder()
+                        .userId(userId)
+                        .source(source)
+                        .channel(channel)
+                        .goodsId(goodsId)
+                        .activityId(activityId)
+                        .build());
 
         GroupBuyActivityDiscountVO groupBuyActivityDiscountVO = trialBalanceEntity.getGroupBuyActivityDiscountVO();
 
         // 查询 outTradeNo 是否已经存在交易记录
-        MarketPayOrderEntity marketPayOrderEntityOld = tradeOrderService.queryNoPayMarketPayOrderByOutTradeNo(userId, outTradeNo);
+        MarketPayOrderEntity marketPayOrderEntityOld =
+                tradeOrderService.queryNoPayMarketPayOrderByOutTradeNo(userId, outTradeNo);
         if (null != marketPayOrderEntityOld) {
             log.info("测试结果(Old):{}", JSON.toJSONString(marketPayOrderEntityOld));
             return;

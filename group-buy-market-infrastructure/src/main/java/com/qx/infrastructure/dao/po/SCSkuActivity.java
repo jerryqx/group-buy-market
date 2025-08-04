@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 
 /**
- * @description sc_sku_activity
  * @author BEJSON.com
+ * @description sc_sku_activity
  * @date 2025-04-25
  */
 @Data
@@ -18,40 +18,39 @@ import java.util.Date;
 @NoArgsConstructor
 public class SCSkuActivity {
 
-
-     /**
-    * 自增主键
-    */
+    /**
+     * 自增主键
+     */
     private Integer id;
 
     /**
-    * 来源
-    */
+     * 来源
+     */
     private String source;
 
     /**
-    * 渠道
-    */
+     * 渠道
+     */
     private String channel;
 
     /**
-    * 活动ID
-    */
+     * 活动ID
+     */
     private Long activityId;
 
     /**
-    * 商品ID
-    */
+     * 商品ID
+     */
     private String goodsId;
 
     /**
-    * 创建时间
-    */
+     * 创建时间
+     */
     private Date createTime;
 
     /**
-    * 更新时间
-    */
+     * 更新时间
+     */
     private Date updateTime;
 
 }

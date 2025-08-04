@@ -19,24 +19,29 @@ public class TradeRefundOrderService implements ITradeRefundOrderService {
 
     private final Map<String, IRefundOrderStrategy> refundOrderStrategyMap;
 
-    public TradeRefundOrderService(ITradeRepository repository, Map<String, IRefundOrderStrategy> refundOrderStrategyMap) {
+    public TradeRefundOrderService(ITradeRepository repository,
+                                   Map<String, IRefundOrderStrategy> refundOrderStrategyMap) {
         this.repository = repository;
         this.refundOrderStrategyMap = refundOrderStrategyMap;
     }
 
     @Override
     public TradeRefundBehaviorEntity refundOrder(TradeRefundCommandEntity tradeRefundCommandEntity) {
-        log.info("逆向流程，退单操作 userId:{} outTradeNo:{}", tradeRefundCommandEntity.getUserId(), tradeRefundCommandEntity.getOutTradeNo());
+        log.info("逆向流程，退单操作 userId:{} outTradeNo:{}", tradeRefundCommandEntity.getUserId(),
+                tradeRefundCommandEntity.getOutTradeNo());
 
         // 1. 查询外部交易单，组队id、orderId、拼团状态
-        MarketPayOrderEntity marketPayOrderEntity = repository.queryGroupBuyOrderRecordByOutTradeNo(tradeRefundCommandEntity.getUserId(), tradeRefundCommandEntity.getOutTradeNo());
+        MarketPayOrderEntity marketPayOrderEntity =
+                repository.queryGroupBuyOrderRecordByOutTradeNo(tradeRefundCommandEntity.getUserId(),
+                        tradeRefundCommandEntity.getOutTradeNo());
         TradeOrderStatusEnumVO tradeOrderStatusEnumVO = marketPayOrderEntity.getTradeOrderStatusEnumVO();
         String teamId = marketPayOrderEntity.getTeamId();
         String orderId = marketPayOrderEntity.getOrderId();
 
         // 返回幂等，已完成退单
         if (TradeOrderStatusEnumVO.CLOSE.equals(tradeOrderStatusEnumVO)) {
-            log.info("逆向流程，退单操作(幂等-重复退单) userId:{} outTradeNo:{}", tradeRefundCommandEntity.getUserId(), tradeRefundCommandEntity.getOutTradeNo());
+            log.info("逆向流程，退单操作(幂等-重复退单) userId:{} outTradeNo:{}", tradeRefundCommandEntity.getUserId(),
+                    tradeRefundCommandEntity.getOutTradeNo());
 
             return TradeRefundBehaviorEntity.builder()
                     .userId(tradeRefundCommandEntity.getUserId())
@@ -51,7 +56,8 @@ public class TradeRefundOrderService implements ITradeRefundOrderService {
         GroupBuyOrderEnumVO groupBuyOrderEnumVO = groupBuyTeamEntity.getStatus();
 
         // 3.状态判断
-        RefundTypeEnumVO refundStrategy = RefundTypeEnumVO.getRefundStrategy(groupBuyOrderEnumVO, tradeOrderStatusEnumVO);
+        RefundTypeEnumVO refundStrategy =
+                RefundTypeEnumVO.getRefundStrategy(groupBuyOrderEnumVO, tradeOrderStatusEnumVO);
         IRefundOrderStrategy refundOrderStrategy = refundOrderStrategyMap.get(refundStrategy.getStrategy());
         refundOrderStrategy.refundOrder(TradeRefundOrderEntity.builder()
                 .userId(tradeRefundCommandEntity.getUserId())
@@ -59,7 +65,6 @@ public class TradeRefundOrderService implements ITradeRefundOrderService {
                 .teamId(teamId)
                 .activityId(groupBuyTeamEntity.getActivityId())
                 .build());
-
 
         return TradeRefundBehaviorEntity.builder()
                 .userId(tradeRefundCommandEntity.getUserId())

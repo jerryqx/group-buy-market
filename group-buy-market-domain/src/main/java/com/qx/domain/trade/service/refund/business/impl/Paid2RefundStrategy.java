@@ -21,7 +21,6 @@ public class Paid2RefundStrategy implements IRefundOrderStrategy {
     @Resource
     private ITradeRepository repository;
 
-
     @Resource
     private ITradeTaskService tradeTaskService;
 
@@ -30,10 +29,12 @@ public class Paid2RefundStrategy implements IRefundOrderStrategy {
 
     @Override
     public void refundOrder(TradeRefundOrderEntity tradeRefundOrderEntity) {
-        log.info("退单；未支付，未成团 userId:{} teamId:{} orderId:{}", tradeRefundOrderEntity.getUserId(), tradeRefundOrderEntity.getTeamId(), tradeRefundOrderEntity.getOrderId());
+        log.info("退单；未支付，未成团 userId:{} teamId:{} orderId:{}", tradeRefundOrderEntity.getUserId(),
+                tradeRefundOrderEntity.getTeamId(), tradeRefundOrderEntity.getOrderId());
 
         // 1. 退单，已支付&未成团
-        NotifyTaskEntity notifyTaskEntity = repository.paid2Refund(GroupBuyRefundAggregate.buildPaid2RefundAggregate(tradeRefundOrderEntity, -1, -1));
+        NotifyTaskEntity notifyTaskEntity = repository.paid2Refund(
+                GroupBuyRefundAggregate.buildPaid2RefundAggregate(tradeRefundOrderEntity, -1, -1));
 
         // 2. 发送MQ消息
         if (null != notifyTaskEntity) {

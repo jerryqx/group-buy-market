@@ -16,7 +16,6 @@ public class AppException extends RuntimeException {
     /** 异常信息 */
     private String info;
 
-
     public AppException(ResponseCode responseCode) {
         this.code = responseCode.getCode();
         this.info = responseCode.getInfo();

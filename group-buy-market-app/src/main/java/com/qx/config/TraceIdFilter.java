@@ -18,7 +18,8 @@ public class TraceIdFilter extends OncePerRequestFilter {
     private static final String TRACE_ID = "trace-id";
 
     @Override
-    protected void doFilterInternal(@NotNull HttpServletRequest request, @NotNull HttpServletResponse response, FilterChain filterChain)
+    protected void doFilterInternal(@NotNull HttpServletRequest request, @NotNull HttpServletResponse response,
+                                    FilterChain filterChain)
             throws ServletException, IOException {
         try {
             String traceId = UUID.randomUUID().toString();

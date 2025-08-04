@@ -1,6 +1,5 @@
 package com.qx.domain.trade.model.valobj;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,7 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class NotifyConfigVO {
-
 
     /**
      * 回调方式；MQ、HTTP

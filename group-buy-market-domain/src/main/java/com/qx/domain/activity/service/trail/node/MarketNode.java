@@ -45,10 +45,12 @@ public class MarketNode extends
 
     @Override
     protected void multiThread(MarketProductEntity requestParameter,
-                               DefaultActivityStrategyFactory.DynamicContext dynamicContext) throws ExecutionException, InterruptedException, TimeoutException {
+                               DefaultActivityStrategyFactory.DynamicContext dynamicContext)
+            throws ExecutionException, InterruptedException, TimeoutException {
         // 异步查询活动配置信息
         QueryGroupBuyActivityDiscountVOThreadTask queryGroupBuyActivityDiscountVOThreadTask =
-                new QueryGroupBuyActivityDiscountVOThreadTask(requestParameter.getActivityId(), requestParameter.getSource(),
+                new QueryGroupBuyActivityDiscountVOThreadTask(requestParameter.getActivityId(),
+                        requestParameter.getSource(),
                         requestParameter.getChannel(), requestParameter.getGoodsId(), repository);
         FutureTask<GroupBuyActivityDiscountVO> groupBuyActivityDiscountVOFutureTask =
                 new FutureTask<>(queryGroupBuyActivityDiscountVOThreadTask);

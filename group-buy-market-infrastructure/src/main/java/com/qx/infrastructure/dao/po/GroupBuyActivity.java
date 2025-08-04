@@ -35,7 +35,6 @@ public class GroupBuyActivity implements Serializable {
      */
     private String activityName;
 
-
     /**
      * 商品ID
      */
@@ -100,7 +99,6 @@ public class GroupBuyActivity implements Serializable {
      * 更新时间
      */
     private Date updateTime;
-
 
     public static String cacheRedisKey(Long activityId) {
         return "group_buy_market_com.qx.infrastructure.dao.po.GroupBuyActivity_" + activityId;

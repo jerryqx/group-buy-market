@@ -27,6 +27,7 @@ public class TradePort implements ITradePort {
 
     @Resource
     private EventPublisher publisher;
+
     @Override
     public String groupBuyNotify(NotifyTaskEntity notifyTask) throws Exception {
         RLock lock = redisService.getLock(notifyTask.lockKey());
@@ -37,17 +38,18 @@ public class TradePort implements ITradePort {
                     // 回调方式 HTTP
                     if (NotifyTypeEnumVO.HTTP.getCode().equals(notifyTask.getNotifyType())) {
                         // 无效的 notifyUrl 则直接返回成功
-                        if (StringUtils.isBlank(notifyTask.getNotifyUrl()) || "暂无".equals(notifyTask.getNotifyUrl())) {
+                        if (StringUtils.isBlank(notifyTask.getNotifyUrl()) ||
+                                "暂无".equals(notifyTask.getNotifyUrl())) {
                             return NotifyTaskHTTPEnumVO.SUCCESS.getCode();
                         }
-                        return groupBuyNotifyService.groupBuyNotify(notifyTask.getNotifyUrl(), notifyTask.getParameterJson());
+                        return groupBuyNotifyService.groupBuyNotify(notifyTask.getNotifyUrl(),
+                                notifyTask.getParameterJson());
                     } else
                         // 回调方式 MQ
                         if (NotifyTypeEnumVO.MQ.getCode().equals(notifyTask.getNotifyType())) {
                             publisher.publish(notifyTask.getNotifyMQ(), notifyTask.getParameterJson());
                             return NotifyTaskHTTPEnumVO.SUCCESS.getCode();
                         }
-
 
                 } finally {
                     if (lock.isLocked() && lock.isHeldByCurrentThread()) {

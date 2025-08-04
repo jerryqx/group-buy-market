@@ -11,13 +11,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class EventPublisher {
 
-
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
     @Value("${spring.rabbitmq.config.producer.exchange}")
     private String exchangeName;
-
 
     public void publish(String routingKey, Object message) {
         log.info("[publish] routingKey: {}, message: {}", routingKey, message);

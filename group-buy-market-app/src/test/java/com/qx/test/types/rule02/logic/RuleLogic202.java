@@ -14,7 +14,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class RuleLogic202 implements ILogicHandler<String, Rule02TradeRuleFactory.DynamicContext, XxxResponse> {
 
-    public XxxResponse apply(String requestParameter, Rule02TradeRuleFactory.DynamicContext dynamicContext) throws Exception{
+    public XxxResponse apply(String requestParameter, Rule02TradeRuleFactory.DynamicContext dynamicContext)
+            throws Exception {
 
         log.info("link model02 RuleLogic202");
 

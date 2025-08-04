@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class TeamStatisticVO {
 
-
     // 开团队伍数量
     private Integer allTeamCount;
     // 成团队伍数量

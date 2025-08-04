@@ -13,13 +13,17 @@ import javax.annotation.Resource;
 
 @Service
 @Slf4j
-public class EndRuleFilter implements ILogicHandler<TradeSettlementRuleCommandEntity, TradeSettlementRuleFilterFactory.DynamicContext, TradeSettlementRuleFilterBackEntity> {
+public class EndRuleFilter implements
+                           ILogicHandler<TradeSettlementRuleCommandEntity, TradeSettlementRuleFilterFactory.DynamicContext, TradeSettlementRuleFilterBackEntity> {
     @Resource
     private ITradeRepository repository;
 
     @Override
-    public TradeSettlementRuleFilterBackEntity apply(TradeSettlementRuleCommandEntity requestParameter, TradeSettlementRuleFilterFactory.DynamicContext dynamicContext) throws Exception {
-        log.info("结算规则过滤-结束节点{} outTradeNo:{}", requestParameter.getUserId(), requestParameter.getOutTradeNo());
+    public TradeSettlementRuleFilterBackEntity apply(TradeSettlementRuleCommandEntity requestParameter,
+                                                     TradeSettlementRuleFilterFactory.DynamicContext dynamicContext)
+            throws Exception {
+        log.info("结算规则过滤-结束节点{} outTradeNo:{}", requestParameter.getUserId(),
+                requestParameter.getOutTradeNo());
 
         // 获取上下文对象
         GroupBuyTeamEntity groupBuyTeamEntity = dynamicContext.getGroupBuyTeamEntity();

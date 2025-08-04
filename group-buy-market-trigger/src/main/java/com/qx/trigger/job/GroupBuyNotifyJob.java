@@ -16,10 +16,8 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class GroupBuyNotifyJob {
 
-
     @Resource
     private ITradeTaskService tradeTaskService;
-
 
     @Resource
     private RedissonClient redissonClient;

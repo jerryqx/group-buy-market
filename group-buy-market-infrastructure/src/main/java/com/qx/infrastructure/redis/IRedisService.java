@@ -28,7 +28,7 @@ public interface IRedisService {
     /**
      * 设置指定 key 的值
      *
-     * @param key   键
+     * @param key 键
      * @param value 值
      */
     <T> void setValue(String key, T value);
@@ -36,8 +36,8 @@ public interface IRedisService {
     /**
      * 设置指定 key 的值
      *
-     * @param key     键
-     * @param value   值
+     * @param key 键
+     * @param value 值
      * @param expired 过期时间
      */
     <T> void setValue(String key, T value, long expired);
@@ -72,7 +72,7 @@ public interface IRedisService {
      * 延迟队列
      *
      * @param rBlockingQueue 加锁队列
-     * @param <T>            泛型
+     * @param <T> 泛型
      * @return 队列
      */
     <T> RDelayedQueue<T> getDelayedQueue(RBlockingQueue<T> rBlockingQueue);
@@ -80,7 +80,7 @@ public interface IRedisService {
     /**
      * 设置值
      *
-     * @param key   key 键
+     * @param key key 键
      * @param value 值
      */
     void setAtomicLong(String key, long value);
@@ -124,7 +124,6 @@ public interface IRedisService {
      */
     long decrBy(String key, long delta);
 
-
     /**
      * 移除指定 key 的值
      *
@@ -143,7 +142,7 @@ public interface IRedisService {
     /**
      * 将指定的值添加到集合中
      *
-     * @param key   键
+     * @param key 键
      * @param value 值
      */
     void addToSet(String key, String value);
@@ -151,7 +150,7 @@ public interface IRedisService {
     /**
      * 判断指定的值是否是集合的成员
      *
-     * @param key   键
+     * @param key 键
      * @param value 值
      * @return 如果是集合的成员返回 true，否则返回 false
      */
@@ -160,7 +159,7 @@ public interface IRedisService {
     /**
      * 将指定的值添加到列表中
      *
-     * @param key   键
+     * @param key 键
      * @param value 值
      */
     void addToList(String key, String value);
@@ -168,7 +167,7 @@ public interface IRedisService {
     /**
      * 获取列表中指定索引的值
      *
-     * @param key   键
+     * @param key 键
      * @param index 索引
      * @return 值
      */
@@ -185,7 +184,7 @@ public interface IRedisService {
     /**
      * 将指定的键值对添加到哈希表中
      *
-     * @param key   键
+     * @param key 键
      * @param field 字段
      * @param value 值
      */
@@ -194,7 +193,7 @@ public interface IRedisService {
     /**
      * 获取哈希表中指定字段的值
      *
-     * @param key   键
+     * @param key 键
      * @param field 字段
      * @return 值
      */
@@ -203,7 +202,7 @@ public interface IRedisService {
     /**
      * 获取哈希表中指定字段的值
      *
-     * @param key   键
+     * @param key 键
      * @param field 字段
      * @return 值
      */
@@ -212,7 +211,7 @@ public interface IRedisService {
     /**
      * 将指定的值添加到有序集合中
      *
-     * @param key   键
+     * @param key 键
      * @param value 值
      */
     void addToSortedSet(String key, String value);

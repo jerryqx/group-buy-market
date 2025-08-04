@@ -16,19 +16,27 @@ import javax.annotation.Resource;
 
 @Service
 @Slf4j
-public class OutTradeNoRuleFilter implements ILogicHandler<TradeSettlementRuleCommandEntity, TradeSettlementRuleFilterFactory.DynamicContext, TradeSettlementRuleFilterBackEntity> {
+public class OutTradeNoRuleFilter implements
+                                  ILogicHandler<TradeSettlementRuleCommandEntity, TradeSettlementRuleFilterFactory.DynamicContext, TradeSettlementRuleFilterBackEntity> {
     @Resource
     private ITradeRepository repository;
 
     @Override
-    public TradeSettlementRuleFilterBackEntity apply(TradeSettlementRuleCommandEntity requestParameter, TradeSettlementRuleFilterFactory.DynamicContext dynamicContext) throws Exception {
-        log.info("结算规则过滤-外部单号校验{} outTradeNo:{}", requestParameter.getUserId(), requestParameter.getOutTradeNo());
+    public TradeSettlementRuleFilterBackEntity apply(TradeSettlementRuleCommandEntity requestParameter,
+                                                     TradeSettlementRuleFilterFactory.DynamicContext dynamicContext)
+            throws Exception {
+        log.info("结算规则过滤-外部单号校验{} outTradeNo:{}", requestParameter.getUserId(),
+                requestParameter.getOutTradeNo());
 
         // 查询拼团信息
-        MarketPayOrderEntity marketPayOrderEntity = repository.queryGroupBuyOrderRecordByOutTradeNo(requestParameter.getUserId(), requestParameter.getOutTradeNo());
+        MarketPayOrderEntity marketPayOrderEntity =
+                repository.queryGroupBuyOrderRecordByOutTradeNo(requestParameter.getUserId(),
+                        requestParameter.getOutTradeNo());
 
-        if (null == marketPayOrderEntity || TradeOrderStatusEnumVO.CLOSE.equals(marketPayOrderEntity.getTradeOrderStatusEnumVO())) {
-            log.error("不存在的外部交易单号或用户已退单，不需要做支付订单结算:{} outTradeNo:{}", requestParameter.getUserId(), requestParameter.getOutTradeNo());
+        if (null == marketPayOrderEntity ||
+                TradeOrderStatusEnumVO.CLOSE.equals(marketPayOrderEntity.getTradeOrderStatusEnumVO())) {
+            log.error("不存在的外部交易单号或用户已退单，不需要做支付订单结算:{} outTradeNo:{}",
+                    requestParameter.getUserId(), requestParameter.getOutTradeNo());
             throw new AppException(ResponseCode.E0104);
         }
 

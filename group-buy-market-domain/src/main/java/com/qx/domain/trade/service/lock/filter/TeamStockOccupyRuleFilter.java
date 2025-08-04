@@ -23,8 +23,11 @@ public class TeamStockOccupyRuleFilter implements ILogicHandler<TradeLockRuleCom
     private ITradeRepository repository;
 
     @Override
-    public TradeLockRuleFilterBackEntity apply(TradeLockRuleCommandEntity requestParameter, TradeLockRuleFilterFactory.DynamicContext dynamicContext) throws Exception {
-        log.info("交易规则过滤-组队库存校验{} activityId:{}", requestParameter.getUserId(), requestParameter.getActivityId());
+    public TradeLockRuleFilterBackEntity apply(TradeLockRuleCommandEntity requestParameter,
+                                               TradeLockRuleFilterFactory.DynamicContext dynamicContext)
+            throws Exception {
+        log.info("交易规则过滤-组队库存校验{} activityId:{}", requestParameter.getUserId(),
+                requestParameter.getActivityId());
 
         // 1. teamId 为空，则为首次开团，不做拼团组队目标量库存限制
         String teamId = requestParameter.getTeamId();
@@ -41,9 +44,9 @@ public class TeamStockOccupyRuleFilter implements ILogicHandler<TradeLockRuleCom
 
         boolean status = repository.occupyTeamStock(teamStockKey, recoveryTeamStockKey, target, validTime);
 
-
         if (!status) {
-            log.warn("交易规则过滤-组队库存校验{} activityId:{} 抢占失败:{}", requestParameter.getUserId(), requestParameter.getActivityId(), teamStockKey);
+            log.warn("交易规则过滤-组队库存校验{} activityId:{} 抢占失败:{}", requestParameter.getUserId(),
+                    requestParameter.getActivityId(), teamStockKey);
             throw new AppException(ResponseCode.E0008);
         }
 

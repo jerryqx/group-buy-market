@@ -7,5 +7,4 @@ public interface ITradeSettlementOrderService {
 
     TradePaySettlementEntity settlementMarketPayOrder(TradePaySuccessEntity tradePaySuccessEntity) throws Exception;
 
-
 }

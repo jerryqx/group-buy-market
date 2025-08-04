@@ -22,16 +22,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class TradeSettlementRuleFilterFactory {
 
-
     @Bean("tradeSettlementRuleFilter")
-    public BusinessLinkedList<TradeSettlementRuleCommandEntity, DynamicContext, TradeSettlementRuleFilterBackEntity> tradeSettlementRuleFilter(SettableRuleFilter settableRuleFilter, OutTradeNoRuleFilter outTradeNoRuleFilter, SCRuleFilter scRuleFilter, EndRuleFilter endRuleFilter) {
+    public BusinessLinkedList<TradeSettlementRuleCommandEntity, DynamicContext, TradeSettlementRuleFilterBackEntity> tradeSettlementRuleFilter(
+            SettableRuleFilter settableRuleFilter, OutTradeNoRuleFilter outTradeNoRuleFilter, SCRuleFilter scRuleFilter,
+            EndRuleFilter endRuleFilter) {
         // 组装链
         LinkArmory<TradeSettlementRuleCommandEntity, DynamicContext, TradeSettlementRuleFilterBackEntity> linkArmory
-                = new LinkArmory<>("交易结算规则过滤链", outTradeNoRuleFilter, scRuleFilter, settableRuleFilter, endRuleFilter);
+                = new LinkArmory<>("交易结算规则过滤链", outTradeNoRuleFilter, scRuleFilter, settableRuleFilter,
+                endRuleFilter);
         return linkArmory.getLogicLink();
 
     }
-
 
     @Data
     @Builder

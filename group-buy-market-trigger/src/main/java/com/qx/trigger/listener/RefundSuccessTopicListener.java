@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class RefundSuccessTopicListener {
 
-
     @RabbitListener(
             bindings = @QueueBinding(
                     value = @Queue(value = "${spring.rabbitmq.config.producer.topic_team_refund.queue}"),

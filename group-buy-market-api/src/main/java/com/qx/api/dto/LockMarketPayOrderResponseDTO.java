@@ -13,7 +13,6 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 public class LockMarketPayOrderResponseDTO {
 
-
     /** 预购订单ID */
     private String orderId;
     /** 原始金额 */

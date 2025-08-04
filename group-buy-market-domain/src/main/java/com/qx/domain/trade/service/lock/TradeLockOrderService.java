@@ -43,7 +43,8 @@ public class TradeLockOrderService implements ITradeLockOrderService {
                 payActivityEntity.getActivityId(), payDiscountEntity.getGoodsId());
         TradeLockRuleFilterBackEntity tradeRuleFilterBackEntity = tradeRuleFilter.apply(
                 TradeLockRuleCommandEntity.builder().activityId(payActivityEntity.getActivityId())
-                        .userId(userEntity.getUserId()).teamId(payActivityEntity.getTeamId()).build(), new TradeLockRuleFilterFactory.DynamicContext());
+                        .userId(userEntity.getUserId()).teamId(payActivityEntity.getTeamId()).build(),
+                new TradeLockRuleFilterFactory.DynamicContext());
         Integer userTakeOrderCount = tradeRuleFilterBackEntity.getUserTakeOrderCount();
         // 构建聚合对象
         GroupBuyOrderAggregate groupBuyOrderAggregate =
@@ -55,7 +56,8 @@ public class TradeLockOrderService implements ITradeLockOrderService {
             return repository.lockMarketPayOrder(groupBuyOrderAggregate);
         } catch (Exception e) {
             // 记录失败恢复量
-            repository.recoveryTeamStock(tradeRuleFilterBackEntity.getRecoveryTeamStockKey(), payActivityEntity.getValidTime());
+            repository.recoveryTeamStock(tradeRuleFilterBackEntity.getRecoveryTeamStockKey(),
+                    payActivityEntity.getValidTime());
             throw e;
         }
     }

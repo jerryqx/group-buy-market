@@ -24,7 +24,6 @@ public class TradeTaskService implements ITradeTaskService {
     @Resource
     private ITradePort port;
 
-
     @Override
     public Map<String, Integer> execNotifyJob() throws Exception {
         log.info("拼团交易-执行回调通知任务");
@@ -44,7 +43,8 @@ public class TradeTaskService implements ITradeTaskService {
 
     @Override
     public Map<String, Integer> execNotifyJob(NotifyTaskEntity notifyTaskEntity) throws Exception {
-        log.info("拼团交易-执行回调通知回调，指定 teamId:{} notifyTaskEntity:{}", notifyTaskEntity.getTeamId(), JSON.toJSONString(notifyTaskEntity));
+        log.info("拼团交易-执行回调通知回调，指定 teamId:{} notifyTaskEntity:{}", notifyTaskEntity.getTeamId(),
+                JSON.toJSONString(notifyTaskEntity));
         return execNotifyJob(Collections.singletonList(notifyTaskEntity));
     }
 

@@ -21,7 +21,6 @@ import java.util.Objects;
 @NoArgsConstructor
 public class GroupBuyActivityDiscountVO {
 
-
     /**
      * 活动ID
      */
@@ -31,8 +30,6 @@ public class GroupBuyActivityDiscountVO {
      * 活动名称
      */
     private String activityName;
-
-
 
     /**
      * 商品ID
@@ -94,14 +91,14 @@ public class GroupBuyActivityDiscountVO {
      */
     private String tagScope;
 
-
     /**
      * 可见限制
      * 只要存在这样一个值，那么首次获得的默认值就是 false
      */
     public boolean isVisible() {
-        if(StringUtils.isBlank(this.tagScope))
+        if (StringUtils.isBlank(this.tagScope)) {
             return TagScopeEnumVO.VISIBLE.getAllow();
+        }
         String[] split = this.tagScope.split(Constants.SPLIT);
         if (split.length > 0 && Objects.equals(split[0], "1") && StringUtils.isNotBlank(split[0])) {
             return TagScopeEnumVO.VISIBLE.getRefuse();
@@ -114,7 +111,7 @@ public class GroupBuyActivityDiscountVO {
      * 只要存在这样一个值，那么首次获得的默认值就是 false
      */
     public boolean isEnable() {
-        if(StringUtils.isBlank(this.tagScope)) return TagScopeEnumVO.VISIBLE.getAllow();
+        if (StringUtils.isBlank(this.tagScope)) return TagScopeEnumVO.VISIBLE.getAllow();
         String[] split = this.tagScope.split(Constants.SPLIT);
         if (split.length == 2 && Objects.equals(split[1], "2") && StringUtils.isNotBlank(split[1])) {
             return TagScopeEnumVO.ENABLE.getRefuse();
@@ -126,7 +123,7 @@ public class GroupBuyActivityDiscountVO {
     @Builder
     @AllArgsConstructor
     @NoArgsConstructor
-    public static class GroupBuyDiscount{
+    public static class GroupBuyDiscount {
 
         /**
          * 折扣ID

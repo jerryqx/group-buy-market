@@ -1,6 +1,5 @@
 package com.qx.test.domain.trade;
 
-
 import com.alibaba.fastjson2.JSON;
 import com.qx.domain.trade.model.entity.TradePaySettlementEntity;
 import com.qx.domain.trade.model.entity.TradePaySuccessEntity;
@@ -36,7 +35,8 @@ public class TradeSettlementOrderServiceTest {
         tradePaySuccessEntity.setUserId("qx01");
         tradePaySuccessEntity.setOutTradeNo("870659258738");
         tradePaySuccessEntity.setOutTradeTime(new Date());
-        TradePaySettlementEntity tradePaySettlementEntity = tradeSettlementOrderService.settlementMarketPayOrder(tradePaySuccessEntity);
+        TradePaySettlementEntity tradePaySettlementEntity =
+                tradeSettlementOrderService.settlementMarketPayOrder(tradePaySuccessEntity);
         log.info("请求参数:{}", JSON.toJSONString(tradePaySuccessEntity));
         log.info("测试结果:{}", JSON.toJSONString(tradePaySettlementEntity));
 

@@ -13,7 +13,6 @@ import java.util.Date;
 @NoArgsConstructor
 public class PayActivityEntity {
 
-
     /** 拼单组队ID */
     private String teamId;
     /** 活动ID */

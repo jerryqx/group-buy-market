@@ -18,7 +18,6 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 public class SkuVO {
 
-
     /**
      * 商品ID
      */

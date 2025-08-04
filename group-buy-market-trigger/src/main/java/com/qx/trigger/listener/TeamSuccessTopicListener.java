@@ -23,5 +23,4 @@ public class TeamSuccessTopicListener {
         log.info("接收消息:{}", message);
     }
 
-
 }

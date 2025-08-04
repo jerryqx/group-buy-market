@@ -32,17 +32,23 @@ public class IndexGroupBuyMarketServiceImpl implements IIndexGroupBuyMarketServi
 
     @Override
     public TrialBalanceEntity indexMarketTrial(MarketProductEntity marketProductEntity) throws Exception {
-        StrategyHandler<MarketProductEntity, DefaultActivityStrategyFactory.DynamicContext, TrialBalanceEntity> strategyHandler = defaultActivityStrategyFactory.strategyHandler();
+        StrategyHandler<MarketProductEntity, DefaultActivityStrategyFactory.DynamicContext, TrialBalanceEntity>
+                strategyHandler = defaultActivityStrategyFactory.strategyHandler();
         return strategyHandler.apply(marketProductEntity, new DefaultActivityStrategyFactory.DynamicContext());
     }
 
     @Override
-    public List<UserGroupBuyOrderDetailEntity> queryInProgressUserGroupBuyOrderDetailList(Long activityId, String userId, Integer ownerCount, Integer randomCount) {
-        log.info("查询拼团进度，指定 activityId:{}, userId:{}, ownerCount:{}, randomCount:{}", activityId, userId, ownerCount, randomCount);
+    public List<UserGroupBuyOrderDetailEntity> queryInProgressUserGroupBuyOrderDetailList(Long activityId,
+                                                                                          String userId,
+                                                                                          Integer ownerCount,
+                                                                                          Integer randomCount) {
+        log.info("查询拼团进度，指定 activityId:{}, userId:{}, ownerCount:{}, randomCount:{}", activityId, userId,
+                ownerCount, randomCount);
         List<UserGroupBuyOrderDetailEntity> unionAllList = new ArrayList<>();
         // 查询个人拼团数据
         if (0 != ownerCount) {
-            List<UserGroupBuyOrderDetailEntity> ownerList = repository.queryInProgressUserGroupBuyOrderDetailListByOwner(activityId, userId, ownerCount);
+            List<UserGroupBuyOrderDetailEntity> ownerList =
+                    repository.queryInProgressUserGroupBuyOrderDetailListByOwner(activityId, userId, ownerCount);
 
             if (!CollectionUtils.isEmpty(ownerList)) {
                 unionAllList.addAll(ownerList);
@@ -51,7 +57,8 @@ public class IndexGroupBuyMarketServiceImpl implements IIndexGroupBuyMarketServi
 
         // 查询其他非个人拼团
         if (0 != randomCount) {
-            List<UserGroupBuyOrderDetailEntity> randomList = repository.queryInProgressUserGroupBuyOrderDetailListByRandom(activityId, userId, randomCount);
+            List<UserGroupBuyOrderDetailEntity> randomList =
+                    repository.queryInProgressUserGroupBuyOrderDetailListByRandom(activityId, userId, randomCount);
             if (!CollectionUtils.isEmpty(randomList)) {
                 unionAllList.addAll(randomList);
             }

@@ -19,7 +19,6 @@ public interface IActivityRepository {
 
     SkuVO querySkuByGodsId(String goodsId);
 
-
     SCSkuActivityVO querySCSkuActivityBySCGoodsId(String source, String channel, String goodsId);
 
     boolean isTagCrowdRange(String tagId, String userId);
@@ -28,10 +27,13 @@ public interface IActivityRepository {
 
     boolean cutRange(String userId);
 
-    List<UserGroupBuyOrderDetailEntity> queryInProgressUserGroupBuyOrderDetailListByOwner(Long activityId, String userId, Integer ownerCount);
+    List<UserGroupBuyOrderDetailEntity> queryInProgressUserGroupBuyOrderDetailListByOwner(Long activityId,
+                                                                                          String userId,
+                                                                                          Integer ownerCount);
 
-    List<UserGroupBuyOrderDetailEntity> queryInProgressUserGroupBuyOrderDetailListByRandom(Long activityId, String userId, Integer randomCount);
-
+    List<UserGroupBuyOrderDetailEntity> queryInProgressUserGroupBuyOrderDetailListByRandom(Long activityId,
+                                                                                           String userId,
+                                                                                           Integer randomCount);
 
     TeamStatisticVO queryTeamStatisticByActivityId(Long activityId);
 }

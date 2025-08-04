@@ -14,16 +14,19 @@ import javax.annotation.Resource;
 
 @Service
 @Slf4j
-public class SCRuleFilter implements ILogicHandler<TradeSettlementRuleCommandEntity, TradeSettlementRuleFilterFactory.DynamicContext, TradeSettlementRuleFilterBackEntity> {
+public class SCRuleFilter implements
+                          ILogicHandler<TradeSettlementRuleCommandEntity, TradeSettlementRuleFilterFactory.DynamicContext, TradeSettlementRuleFilterBackEntity> {
 
     @Resource
     private ITradeRepository repository;
 
-
     @Override
-    public TradeSettlementRuleFilterBackEntity apply(TradeSettlementRuleCommandEntity requestParameter, TradeSettlementRuleFilterFactory.DynamicContext dynamicContext) throws Exception {
+    public TradeSettlementRuleFilterBackEntity apply(TradeSettlementRuleCommandEntity requestParameter,
+                                                     TradeSettlementRuleFilterFactory.DynamicContext dynamicContext)
+            throws Exception {
 
-        log.info("结算规则过滤-渠道黑名单校验{} outTradeNo:{}", requestParameter.getUserId(), requestParameter.getOutTradeNo());
+        log.info("结算规则过滤-渠道黑名单校验{} outTradeNo:{}", requestParameter.getUserId(),
+                requestParameter.getOutTradeNo());
 
         // sc 渠道黑名单拦截
         boolean intercept = repository.isSCBlackIntercept(requestParameter.getSource(), requestParameter.getChannel());

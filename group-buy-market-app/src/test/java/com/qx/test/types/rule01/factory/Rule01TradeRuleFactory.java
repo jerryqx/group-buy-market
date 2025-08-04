@@ -20,12 +20,10 @@ public class Rule01TradeRuleFactory {
     @Resource
     private RuleLogic102 ruleLogic102;
 
-
     public ILogicLink<String, DynamicContext, String> openLogicLink() {
-          ruleLogic101.appendNext(ruleLogic102);
-          return ruleLogic101;
+        ruleLogic101.appendNext(ruleLogic102);
+        return ruleLogic101;
     }
-
 
     @Data
     @Builder

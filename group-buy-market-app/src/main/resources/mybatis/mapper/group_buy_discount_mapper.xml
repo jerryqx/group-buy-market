@@ -16,7 +16,8 @@
     </resultMap>
 
     <select id="queryGroupBuyDiscountList" resultMap="dataMap">
-        select * from group_buy_discount
+        select *
+        from group_buy_discount
     </select>
 
     <select id="queryGroupBuyActivityDiscountByDiscountId" parameterType="java.lang.String" resultMap="dataMap">

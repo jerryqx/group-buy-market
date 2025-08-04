@@ -1,6 +1,5 @@
 package com.qx.test.trigger;
 
-
 import com.alibaba.fastjson.JSON;
 import com.qx.api.IDCCService;
 import com.qx.domain.activity.model.entity.MarketProductEntity;
@@ -54,6 +53,5 @@ public class DCCControllerTest {
         log.info("请求参数:{}", JSON.toJSONString(marketProductEntity));
         log.info("返回结果:{}", JSON.toJSONString(trialBalanceEntity));
     }
-
 
 }

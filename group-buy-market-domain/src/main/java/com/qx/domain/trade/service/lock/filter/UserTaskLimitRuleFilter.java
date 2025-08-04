@@ -16,14 +16,15 @@ import javax.annotation.Resource;
 @Slf4j
 @Service
 public class UserTaskLimitRuleFilter implements
-        ILogicHandler<TradeLockRuleCommandEntity, TradeLockRuleFilterFactory.DynamicContext, TradeLockRuleFilterBackEntity> {
+                                     ILogicHandler<TradeLockRuleCommandEntity, TradeLockRuleFilterFactory.DynamicContext, TradeLockRuleFilterBackEntity> {
 
     @Resource
     private ITradeRepository repository;
 
     @Override
     public TradeLockRuleFilterBackEntity apply(TradeLockRuleCommandEntity requestParameter,
-                                               TradeLockRuleFilterFactory.DynamicContext dynamicContext) throws Exception {
+                                               TradeLockRuleFilterFactory.DynamicContext dynamicContext)
+            throws Exception {
 
         log.info("交易规则过滤-用户参与次数校验{} activityId:{}", requestParameter.getUserId(),
                 requestParameter.getActivityId());

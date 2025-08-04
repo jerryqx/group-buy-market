@@ -12,11 +12,11 @@
         <result column="update_time" property="updateTime"/>
     </resultMap>
 
-    <select id="querySCSkuActivityBySCGoodsId" parameterType="com.qx.infrastructure.dao.po.SCSkuActivity" resultMap="dataMap">
+    <select id="querySCSkuActivityBySCGoodsId" parameterType="com.qx.infrastructure.dao.po.SCSkuActivity"
+            resultMap="dataMap">
         select source, channel, activity_id, goods_id
         from sc_sku_activity
         where goods_id = #{goodsId}
     </select>
-
 
 </mapper>

@@ -16,9 +16,11 @@ import org.springframework.stereotype.Service;
 public class Rule02TradeRuleFactory {
 
     @Bean("demo01")
-    public BusinessLinkedList<String, DynamicContext, XxxResponse> demo01(RuleLogic201 ruleLogic201, RuleLogic202 ruleLogic202) {
+    public BusinessLinkedList<String, DynamicContext, XxxResponse> demo01(RuleLogic201 ruleLogic201,
+                                                                          RuleLogic202 ruleLogic202) {
 
-        LinkArmory<String, DynamicContext, XxxResponse> linkArmory = new LinkArmory<>("demo01", ruleLogic201, ruleLogic202);
+        LinkArmory<String, DynamicContext, XxxResponse> linkArmory =
+                new LinkArmory<>("demo01", ruleLogic201, ruleLogic202);
 
         return linkArmory.getLogicLink();
     }

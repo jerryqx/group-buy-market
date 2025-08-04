@@ -38,5 +38,4 @@ public enum ResponseCode {
     private String code;
     private String info;
 
-
 }

@@ -21,7 +21,8 @@ public class Link01Test {
 
     @Test
     public void test_model01_01() throws Exception {
-        ILogicLink<String, Rule01TradeRuleFactory.DynamicContext, String> logicLink = rule01TradeRuleFactory.openLogicLink();
+        ILogicLink<String, Rule01TradeRuleFactory.DynamicContext, String> logicLink =
+                rule01TradeRuleFactory.openLogicLink();
         String logic = logicLink.apply("123", new Rule01TradeRuleFactory.DynamicContext());
         log.info("测试结果:{}", JSON.toJSONString(logic));
     }

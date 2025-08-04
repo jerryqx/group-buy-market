@@ -27,12 +27,10 @@ public class QueryGroupBuyActivityDiscountVOThreadTask implements Callable<Group
      */
     private final String channel;
 
-
     /**
      * 商品ID
      */
     private final String goodsId;
-
 
     /**
      * 活动仓储
@@ -53,11 +51,11 @@ public class QueryGroupBuyActivityDiscountVOThreadTask implements Callable<Group
         // 判断请求参数是是否存在可用的活动ID
         Long availableActivityId = activityId;
         if (null == activityId) {
-            SCSkuActivityVO scSkuActivityVO = activityRepository.querySCSkuActivityBySCGoodsId(source, channel, goodsId);
+            SCSkuActivityVO scSkuActivityVO =
+                    activityRepository.querySCSkuActivityBySCGoodsId(source, channel, goodsId);
             if (null == scSkuActivityVO) return null;
             availableActivityId = scSkuActivityVO.getActivityId();
         }
-
 
         return activityRepository.queryGroupBuyActivityDiscountVO(availableActivityId);
     }

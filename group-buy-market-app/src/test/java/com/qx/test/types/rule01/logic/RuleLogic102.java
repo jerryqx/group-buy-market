@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-public class RuleLogic102 extends AbstractLogicLink<String, Rule01TradeRuleFactory.DynamicContext,String>
-{
+public class RuleLogic102 extends AbstractLogicLink<String, Rule01TradeRuleFactory.DynamicContext, String> {
     @Override
-    public String apply(String requestParameter, Rule01TradeRuleFactory.DynamicContext dynamicContext) throws Exception {
+    public String apply(String requestParameter, Rule01TradeRuleFactory.DynamicContext dynamicContext)
+            throws Exception {
         log.info("link model02 RuleLogic101");
 
         return "link model01 单实例链";

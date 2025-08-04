@@ -8,7 +8,6 @@ import lombok.*;
 @NoArgsConstructor
 public class TradeRefundBehaviorEntity {
 
-
     /**
      * 用户ID
      */
