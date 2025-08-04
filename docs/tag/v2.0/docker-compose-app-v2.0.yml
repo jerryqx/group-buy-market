@@ -1,0 +1,149 @@
+version: '3.8'
+# docker-compose -f docker-compose-app-v1.0.yml up -d
+services:
+  # 部署前端项目
+  nginx:
+    image: registry.cn-hangzhou.aliyuncs.com/xfg-studio/nginx:latest
+    container_name: nginx
+    restart: always
+    ports:
+      - '80:80'
+    volumes:
+      - ./nginx/html:/usr/share/nginx/html
+      - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/conf/conf.d:/etc/nginx/conf.d
+    privileged: true
+  # 部署后端项目 - 小型支付商城
+  s-pay-mall-app:
+    image: registry.cn-hangzhou.aliyuncs.com/qx-images/s-pay-ddd:2.0
+    container_name: s-pay-mall-app
+    restart: on-failure
+    ports:
+      - "9091:8080"
+    environment:
+      - TZ=PRC
+      - SERVER_PORT=8080
+      - APP_CONFIG_GROUP_BUY_MARKET_API_URL=http://117.72.48.228
+      - APP_CONFIG_GROUP_BUY_MARKET_NOTIFY_URL=http://117.72.48.228/api/v1/alipay/group_buy_notify
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=123456
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/s_pay_mall?serverTimezone=UTC&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Shanghai
+      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=com.mysql.cj.jdbc.Driver
+      - SPRING_HIKARI_POOL_NAME=Retail_HikariCP
+      - WEIXIN_CONFIG_ORIGINALID=gh_dd05c099d67d
+      - WEIXIN_CONFIG_TOKEN=b8b6
+      - WEIXIN_CONFIG_APP_ID=wxfa86ef6d54566d89
+      - WEIXIN_CONFIG_APP_SECRET=281fce61c777138f98db0ada779be278
+      - WEIXIN_CONFIG_TEMPLATE_ID=Z1H_2N6vhKEnQtlq2OL2noJlHMPDYvH7yECneffhkhU
+      - ALIPAY_NOTIFY_URL=http://117.72.48.228/api/v1/alipay/alipay_notify_url
+      - ALIPAY_RETURN_URL=http://117.72.48.228
+    volumes:
+      - ./log:/data/log
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    networks:
+      - my-network
+  # 拼团，负载01
+  # 原镜像，需要自己构建；fuzhengwei/group-buy-market-app:2.0
+  # 代理镜像（小傅哥打包好的，可以直接使用）； registry.cn-hangzhou.aliyuncs.com/xfg-studio/group-buy-market-app:2.0
+  group-buy-market-01:
+    image: registry.cn-hangzhou.aliyuncs.com/qx-images/group-buy-market:2.0
+    container_name: group-buy-market-app-01
+    restart: on-failure
+    ports:
+      - "8091:8091"
+    environment:
+      - TZ=PRC
+      - SERVER_PORT=8091
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=123456
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/group_buy_market?serverTimezone=UTC&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Shanghai
+      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=com.mysql.cj.jdbc.Driver
+      - SPRING_HIKARI_POOL_NAME=Retail_HikariCP
+      - REDIS_SDK_CONFIG_HOST=redis
+      - REDIS_SDK_CONFIG_PORT=6379
+    volumes:
+      - ./log:/data/log
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    networks:
+      - my-network
+  # # 拼团，负载02
+  group-buy-market-02:
+    image: registry.cn-hangzhou.aliyuncs.com/qx-images/group-buy-market:2.0
+    container_name: group-buy-market-app-02
+    restart: on-failure
+    ports:
+      - "8092:8091"
+    environment:
+      - TZ=PRC
+      - SERVER_PORT=8091
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=123456
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/group_buy_market?serverTimezone=UTC&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Shanghai
+      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=com.mysql.cj.jdbc.Driver
+      - SPRING_HIKARI_POOL_NAME=Retail_HikariCP
+      - REDIS_SDK_CONFIG_HOST=redis
+      - REDIS_SDK_CONFIG_PORT=6379
+    volumes:
+      - ./log:/data/log
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    networks:
+      - my-network
+  # 数据库
+  mysql:
+    image: registry.cn-hangzhou.aliyuncs.com/xfg-studio/mysql:8.0.32
+    container_name: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      TZ: Asia/Shanghai
+      MYSQL_ROOT_PASSWORD: 123456
+    ports:
+      - "13306:3306"
+    volumes:
+      - ./mysql/my.cnf:/etc/mysql/conf.d/mysql.cnf:ro
+      - ./mysql/sql:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      interval: 5s
+      timeout: 10s
+      retries: 10
+      start_period: 15s
+    networks:
+      - my-network
+
+
+  # Redis
+  redis:
+    image: registry.cn-hangzhou.aliyuncs.com/xfg-studio/redis:6.2
+    container_name: redis
+    restart: always
+    hostname: redis
+    privileged: true
+    ports:
+      - 16379:6379
+    volumes:
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+    command: redis-server /usr/local/etc/redis/redis.conf
+    networks:
+      - my-network
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+networks:
+  my-network:
+    driver: bridge
