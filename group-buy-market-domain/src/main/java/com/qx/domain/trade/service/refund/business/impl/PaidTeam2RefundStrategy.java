@@ -5,14 +5,15 @@ import com.qx.domain.trade.model.aggregate.GroupBuyRefundAggregate;
 import com.qx.domain.trade.model.entity.GroupBuyTeamEntity;
 import com.qx.domain.trade.model.entity.NotifyTaskEntity;
 import com.qx.domain.trade.model.entity.TradeRefundOrderEntity;
+import com.qx.domain.trade.model.valobj.TeamRefundSuccess;
 import com.qx.domain.trade.service.ITradeTaskService;
 import com.qx.domain.trade.service.refund.business.IRefundOrderStrategy;
 import com.qx.types.enums.GroupBuyOrderEnumVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.concurrent.ThreadPoolExecutor;
+import javax.annotation.Resource;
 
 @Slf4j
 @Service("paidTeam2RefundStrategy")
@@ -43,5 +44,12 @@ public class PaidTeam2RefundStrategy implements IRefundOrderStrategy {
         NotifyTaskEntity notifyTaskEntity = repository.paidTeam2Refund(
                 GroupBuyRefundAggregate.buildPaidTeam2RefundAggregate(tradeRefundOrderEntity, -1, -1,
                         groupBuyOrderEnumVO));
+    }
+
+    @Override
+    public void reverseStock(TeamRefundSuccess teamRefundSuccess) throws Exception {
+        log.info("退单；已支付、已成团，队伍组队结束，不需要恢复锁单量 {} {} {}", teamRefundSuccess.getUserId(),
+                teamRefundSuccess.getActivityId(), teamRefundSuccess.getTeamId());
+
     }
 }

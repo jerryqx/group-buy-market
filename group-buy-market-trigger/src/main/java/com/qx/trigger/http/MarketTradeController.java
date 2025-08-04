@@ -11,7 +11,12 @@ import com.qx.domain.activity.model.entity.MarketProductEntity;
 import com.qx.domain.activity.model.entity.TrialBalanceEntity;
 import com.qx.domain.activity.model.valobj.GroupBuyActivityDiscountVO;
 import com.qx.domain.activity.service.IIndexGroupBuyMarketService;
-import com.qx.domain.trade.model.entity.*;
+import com.qx.domain.trade.model.entity.MarketPayOrderEntity;
+import com.qx.domain.trade.model.entity.PayActivityEntity;
+import com.qx.domain.trade.model.entity.PayDiscountEntity;
+import com.qx.domain.trade.model.entity.TradePaySettlementEntity;
+import com.qx.domain.trade.model.entity.TradePaySuccessEntity;
+import com.qx.domain.trade.model.entity.UserEntity;
 import com.qx.domain.trade.model.valobj.GroupBuyProgressVO;
 import com.qx.domain.trade.model.valobj.NotifyConfigVO;
 import com.qx.domain.trade.model.valobj.NotifyTypeEnumVO;
@@ -22,10 +27,15 @@ import com.qx.types.enums.ResponseCode;
 import com.qx.types.exception.AppException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
 import java.util.Objects;
+import javax.annotation.Resource;
 
 @Slf4j
 @RestController()
@@ -163,6 +173,7 @@ public class MarketTradeController implements IMarketTradeService {
                             .tradeOrderStatus(marketPayOrderEntity.getTradeOrderStatusEnumVO().getCode())
                             .originalPrice(marketPayOrderEntity.getOriginalPrice())
                             .payPrice(marketPayOrderEntity.getPayPrice())
+                            .teamId(marketPayOrderEntity.getTeamId())
                             .build())
                     .build();
 

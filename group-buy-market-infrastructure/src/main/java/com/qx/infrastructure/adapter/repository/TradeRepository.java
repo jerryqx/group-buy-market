@@ -332,7 +332,7 @@ public class TradeRepository implements ITradeRepository {
 
         // 1. incr 得到值，与总量和恢复量做对比。恢复量为系统失败时候记录的量。
         // 2. 从有组队量开始，相当于已经有了一个占用量，所以要 +1
-        // 因为失败的时候也会导致 teamStockKey 增加，所有在比较占用量的时候需要将失败的次数加上
+        // 因为失败的时候也会导致 teamStockKey 增加，所以在比较占用量的时候需要将失败的次数加上
         long occupy = redisService.incr(teamStockKey) + 1;
         if (occupy > target + recoveryCount) {
             redisService.setAtomicLong(teamStockKey, target);
@@ -401,7 +401,7 @@ public class TradeRepository implements ITradeRepository {
         ;
         notifyTask.setParameterJson(JSON.toJSONString(new HashMap<String, Object>() {
             {
-                put("type", RefundTypeEnumVO.PAID_FORMED.getCode());
+                put("type", RefundTypeEnumVO.UNPAID_UNLOCK.getCode());
                 put("userId", tradeRefundOrderEntity.getUserId());
                 put("teamId", tradeRefundOrderEntity.getTeamId());
                 put("orderId", tradeRefundOrderEntity.getOrderId());
@@ -544,6 +544,38 @@ public class TradeRepository implements ITradeRepository {
                 .notifyMQ(notifyTask.getNotifyMQ())
                 .notifyCount(notifyTask.getNotifyCount())
                 .parameterJson(notifyTask.getParameterJson()).build();
+
+    }
+
+    @Override
+    public void refund2AddRecovery(String recoveryTeamStockKey, String orderId) {
+        // 如果恢复库存key为空，直接返回
+        if (StringUtils.isBlank(recoveryTeamStockKey) || StringUtils.isBlank(orderId)) {
+            return;
+        }
+
+        // 使用orderId作为锁的key，避免同一订单重复恢复库存
+        String lockKey = "refund_lock_" + orderId;
+
+        // 尝试获取分布式锁，防止重复操作 30天过期时间
+        Boolean lockAcquired = redisService.setNx(lockKey, 30 * 24 * 60 * 60 * 1000L, TimeUnit.MILLISECONDS);
+
+        if (!lockAcquired) {
+            log.warn("订单 {} 恢复库存操作已在进行中，跳过重复操作", orderId);
+            return;
+        }
+
+        try {
+            // 在锁保护下执行库存恢复操作
+            redisService.incr(recoveryTeamStockKey);
+            log.info("订单 {} 恢复库存成功，恢复库存key: {}", orderId, recoveryTeamStockKey);
+
+        } catch (Exception e) {
+            log.error("订单 {} 恢复库存失败，恢复库存key: {}", orderId, recoveryTeamStockKey, e);
+            // 如果抛异常则释放锁，允许MQ重新消费恢复库存
+            redisService.remove(lockKey);
+            throw e;
+        }
 
     }
 

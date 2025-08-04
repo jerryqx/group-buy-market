@@ -65,15 +65,11 @@ public enum RefundTypeEnumVO {
                                 tradeOrderStatusEnumVO));
     }
 
-    public static RefundTypeEnumVO valueOf(Integer code) {
-        switch (code) {
-            case 1:
-                return UNPAID_UNLOCK;
-            case 2:
-                return PAID_UNFORMED;
-            case 3:
-                return PAID_FORMED;
-        }
-        throw new RuntimeException("退单类型枚举值不存在: " + code);
+    public static RefundTypeEnumVO getRefundTypeEnumVOByCode(String code) {
+        return Arrays.stream(values())
+                .filter(refundType -> refundType.code.equals(code))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("不支持的退款类型: " + code));
+
     }
 }

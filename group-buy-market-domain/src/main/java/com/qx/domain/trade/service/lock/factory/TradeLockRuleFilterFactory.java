@@ -21,6 +21,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class TradeLockRuleFilterFactory {
 
+    private static final String teamStockKey = "group_buy_market_team_stock_key_";
+
+
     @Bean("tradeRuleFilter")
     public BusinessLinkedList<TradeLockRuleCommandEntity, DynamicContext,
             TradeLockRuleFilterBackEntity> tradeRuleFilter(ActivityUsabilityRuleFilter activityUsabilityRuleFilter,
@@ -47,12 +50,21 @@ public class TradeLockRuleFilterFactory {
 
         public String generateTeamStockKey(String teamId) {
             if (StringUtils.isBlank(teamId)) return null;
-            return teamStockKey + groupBuyActivityEntity.getActivityId() + "_" + teamId;
+            return TradeLockRuleFilterFactory.generateTeamStockKey(groupBuyActivityEntity.getActivityId(), teamId);
         }
 
         public String generateRecoveryTeamStockKey(String teamId) {
             if (StringUtils.isBlank(teamId)) return null;
-            return teamStockKey + groupBuyActivityEntity.getActivityId() + "_" + teamId + "_recovery";
+            return TradeLockRuleFilterFactory.generateRecoveryTeamStockKey(groupBuyActivityEntity.getActivityId(),
+                    teamId);
         }
+    }
+
+    public static String generateTeamStockKey(Long activityId, String teamId) {
+        return teamStockKey + activityId + "_" + teamId;
+    }
+
+    public static String generateRecoveryTeamStockKey(Long activityId, String teamId) {
+        return teamStockKey + activityId + "_" + teamId + "_recovery";
     }
 }
