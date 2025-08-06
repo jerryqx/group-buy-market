@@ -7,7 +7,7 @@ import com.qx.domain.trade.model.entity.NotifyTaskEntity;
 import com.qx.domain.trade.model.entity.TradeRefundOrderEntity;
 import com.qx.domain.trade.model.valobj.TeamRefundSuccess;
 import com.qx.domain.trade.service.ITradeTaskService;
-import com.qx.domain.trade.service.refund.business.IRefundOrderStrategy;
+import com.qx.domain.trade.service.refund.business.AbstractRefundOrderStrategy;
 import com.qx.types.enums.GroupBuyOrderEnumVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ import javax.annotation.Resource;
 
 @Slf4j
 @Service("paidTeam2RefundStrategy")
-public class PaidTeam2RefundStrategy implements IRefundOrderStrategy {
+public class PaidTeam2RefundStrategy extends AbstractRefundOrderStrategy {
 
     @Resource
     private ITradeRepository repository;
@@ -44,6 +44,9 @@ public class PaidTeam2RefundStrategy implements IRefundOrderStrategy {
         NotifyTaskEntity notifyTaskEntity = repository.paidTeam2Refund(
                 GroupBuyRefundAggregate.buildPaidTeam2RefundAggregate(tradeRefundOrderEntity, -1, -1,
                         groupBuyOrderEnumVO));
+
+        // 2. 发送MQ消息 - 发送MQ，恢复锁单库存量使用
+        sendRefundNotifyMessage(notifyTaskEntity, "已支付，已成团");
     }
 
     @Override

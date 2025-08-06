@@ -1,12 +1,14 @@
-package com.qx.domain.trade.service.refund.business;
+package com.qx.domain.trade.service.refund;
 
+import cn.bugstack.wrench.design.framework.link.model2.chain.BusinessLinkedList;
 import com.qx.domain.trade.adapter.repository.ITradeRepository;
-import com.qx.domain.trade.model.entity.*;
+import com.qx.domain.trade.model.entity.TradeRefundBehaviorEntity;
+import com.qx.domain.trade.model.entity.TradeRefundCommandEntity;
 import com.qx.domain.trade.model.valobj.RefundTypeEnumVO;
 import com.qx.domain.trade.model.valobj.TeamRefundSuccess;
-import com.qx.domain.trade.model.valobj.TradeOrderStatusEnumVO;
 import com.qx.domain.trade.service.ITradeRefundOrderService;
-import com.qx.types.enums.GroupBuyOrderEnumVO;
+import com.qx.domain.trade.service.refund.business.IRefundOrderStrategy;
+import com.qx.domain.trade.service.refund.factory.TradeRefundRuleFilterFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -20,14 +22,25 @@ public class TradeRefundOrderService implements ITradeRefundOrderService {
 
     private final Map<String, IRefundOrderStrategy> refundOrderStrategyMap;
 
+    private final BusinessLinkedList<TradeRefundCommandEntity, TradeRefundRuleFilterFactory.DynamicContext, TradeRefundBehaviorEntity>
+            tradeRefundRuleFilter;
+
     public TradeRefundOrderService(ITradeRepository repository,
-                                   Map<String, IRefundOrderStrategy> refundOrderStrategyMap) {
+                                   Map<String, IRefundOrderStrategy> refundOrderStrategyMap,
+                                   BusinessLinkedList<TradeRefundCommandEntity, TradeRefundRuleFilterFactory.DynamicContext, TradeRefundBehaviorEntity> tradeRefundRuleFilter) {
         this.repository = repository;
         this.refundOrderStrategyMap = refundOrderStrategyMap;
+        this.tradeRefundRuleFilter = tradeRefundRuleFilter;
     }
 
     @Override
-    public TradeRefundBehaviorEntity refundOrder(TradeRefundCommandEntity tradeRefundCommandEntity) {
+    public TradeRefundBehaviorEntity refundOrder(TradeRefundCommandEntity tradeRefundCommandEntity) throws Exception {
+
+        log.info("逆向流程，退单操作 userId:{} outTradeNo:{}", tradeRefundCommandEntity.getUserId(),
+                tradeRefundCommandEntity.getOutTradeNo());
+
+        return tradeRefundRuleFilter.apply(tradeRefundCommandEntity, new TradeRefundRuleFilterFactory.DynamicContext());
+/*
         log.info("逆向流程，退单操作 userId:{} outTradeNo:{}", tradeRefundCommandEntity.getUserId(),
                 tradeRefundCommandEntity.getOutTradeNo());
 
@@ -72,7 +85,7 @@ public class TradeRefundOrderService implements ITradeRefundOrderService {
                 .orderId(orderId)
                 .teamId(teamId)
                 .tradeRefundBehaviorEnum(TradeRefundBehaviorEntity.TradeRefundBehaviorEnum.SUCCESS)
-                .build();
+                .build();*/
     }
 
     @Override
