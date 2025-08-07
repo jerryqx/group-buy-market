@@ -1,4 +1,4 @@
-package com.qx.domain.trade.model.entity;
+package com.qx.api.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class TradeRefundOrderEntity {
+public class RefundMarketPayOrderResponseDTO {
 
     /**
      * 用户ID
@@ -17,23 +17,22 @@ public class TradeRefundOrderEntity {
     private String userId;
 
     /**
-     * 拼单组队ID
-     */
-    private String teamId;
-
-    /**
-     * 预购订单ID
+     * 订单ID
      */
     private String orderId;
 
     /**
-     * 活动ID
+     * 组队ID
      */
-    private Long activityId;
+    private String teamId;
 
     /**
-     * 外部交易单号
+     * 退单行为状态码
      */
-    private String outTradeNo;
+    private String code;
 
+    /**
+     * 退单行为状态信息
+     */
+    private String info;
 }

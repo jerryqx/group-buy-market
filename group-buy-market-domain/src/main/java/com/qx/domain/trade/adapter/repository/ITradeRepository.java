@@ -1,5 +1,6 @@
 package com.qx.domain.trade.adapter.repository;
 
+import com.qx.domain.activity.model.entity.UserGroupBuyOrderDetailEntity;
 import com.qx.domain.trade.model.aggregate.GroupBuyOrderAggregate;
 import com.qx.domain.trade.model.aggregate.GroupBuyRefundAggregate;
 import com.qx.domain.trade.model.aggregate.GroupBuyTeamSettlementAggregate;
@@ -50,4 +51,6 @@ public interface ITradeRepository {
     NotifyTaskEntity paidTeam2Refund(GroupBuyRefundAggregate groupBuyRefundAggregate);
 
     void refund2AddRecovery(String recoveryTeamStockKey, String orderId);
+
+    List<UserGroupBuyOrderDetailEntity> queryTimeoutUnpaidOrderList();
 }

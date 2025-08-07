@@ -1,6 +1,7 @@
 package com.qx.domain.trade.service.refund;
 
 import cn.bugstack.wrench.design.framework.link.model2.chain.BusinessLinkedList;
+import com.qx.domain.activity.model.entity.UserGroupBuyOrderDetailEntity;
 import com.qx.domain.trade.adapter.repository.ITradeRepository;
 import com.qx.domain.trade.model.entity.TradeRefundBehaviorEntity;
 import com.qx.domain.trade.model.entity.TradeRefundCommandEntity;
@@ -12,6 +13,7 @@ import com.qx.domain.trade.service.refund.factory.TradeRefundRuleFilterFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 @Slf4j
@@ -101,5 +103,11 @@ public class TradeRefundOrderService implements ITradeRefundOrderService {
         // 逆向库操作，回复锁单量
         refundOrderStrategy.reverseStock(teamRefundSuccess);
 
+    }
+
+    @Override
+    public List<UserGroupBuyOrderDetailEntity> queryTimeoutUnpaidOrderList() {
+        log.info("扫描数据，超时组队未支付订单");
+        return repository.queryTimeoutUnpaidOrderList();
     }
 }

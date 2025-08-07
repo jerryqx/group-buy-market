@@ -1,11 +1,15 @@
-package com.qx.domain.trade.model.entity;
+package com.qx.api.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Builder
 @Data
-public class TradeRefundCommandEntity {
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class RefundMarketPayOrderRequestDTO {
 
     /**
      * 用户ID
@@ -26,5 +30,4 @@ public class TradeRefundCommandEntity {
      * 来源
      */
     private String channel;
-
 }
